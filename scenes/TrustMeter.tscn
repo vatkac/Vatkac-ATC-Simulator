@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfa2ntix1bdtq"]
+
+[ext_resource type="Texture2D" uid="uid://dh35vudefxck8" path="res://assets/textures/good_trust.svg" id="1_r6vp1"]
+[ext_resource type="Script" uid="uid://c52tqxf62vmba" path="res://scripts/TrustMeter.gd" id="2_xpy8g"]
+[ext_resource type="Texture2D" uid="uid://ymhr38n2ufuh" path="res://assets/textures/mid_trust.svg" id="3_8yl6l"]
+[ext_resource type="Texture2D" uid="uid://uug6j842457q" path="res://assets/textures/bad_trust.svg" id="4_ofvtt"]
+
+[node name="TrustMeter" type="TextureRect"]
+custom_minimum_size = Vector2(51, 51)
+offset_left = 409.0
+offset_top = 26.0
+offset_right = 460.0
+offset_bottom = 77.0
+texture = ExtResource("1_r6vp1")
+expand_mode = 1
+script = ExtResource("2_xpy8g")
+good_trust = ExtResource("1_r6vp1")
+mid_trust = ExtResource("3_8yl6l")
+bad_trust = ExtResource("4_ofvtt")
+good_trust_threshold = 66
+mid_trust_threshold = 33
+trust = 32

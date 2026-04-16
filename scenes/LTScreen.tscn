@@ -1,0 +1,81 @@
+[gd_scene load_steps=11 format=3 uid="uid://bsv7s885ioltl"]
+
+[ext_resource type="FontVariation" uid="uid://cvsxc4w5by87y" path="res://assets/fonts/Raleway-VariableFont.tres" id="1_4h6wa"]
+[ext_resource type="PackedScene" uid="uid://c5fe1vs2mrqs2" path="res://scenes/Table.tscn" id="2_bloyt"]
+[ext_resource type="PackedScene" uid="uid://cfa2ntix1bdtq" path="res://scenes/TrustMeter.tscn" id="3_bloyt"]
+[ext_resource type="PackedScene" uid="uid://dscwc7272ciwp" path="res://scenes/Balance.tscn" id="4_ak612"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_h1e4n"]
+font = ExtResource("1_4h6wa")
+font_size = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_brty3"]
+bg_color = Color(0.08235294, 0.08235294, 0.08235294, 1)
+corner_radius_top_left = 80
+corner_radius_top_right = 80
+corner_radius_bottom_right = 80
+corner_radius_bottom_left = 80
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ak612"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_brty3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u10sd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mphog"]
+
+[node name="ColorRect" type="ColorRect"]
+offset_right = 486.0
+offset_bottom = 864.0
+color = Color(0.22745098, 0.22745098, 0.22745098, 1)
+
+[node name="TrustMeter" parent="." instance=ExtResource("3_bloyt")]
+layout_mode = 0
+anchor_left = 0.84156376
+anchor_top = 0.030092593
+anchor_right = 0.94650203
+anchor_bottom = 0.08912037
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+trust = 25
+metadata/_edit_use_anchors_ = true
+
+[node name="Balance" parent="." instance=ExtResource("4_ak612")]
+layout_mode = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 93.0
+offset_top = 111.0
+offset_right = 394.0
+offset_bottom = 240.0
+text = "Запросы на
+взлет и посадку"
+label_settings = SubResource("LabelSettings_h1e4n")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" parent="." instance=ExtResource("2_bloyt")]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 283.0
+offset_right = 402.0
+offset_bottom = 583.0
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(318, 73)
+layout_mode = 0
+offset_left = 84.0
+offset_top = 624.0
+offset_right = 402.0
+offset_bottom = 697.0
+theme_override_fonts/font = ExtResource("1_4h6wa")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_brty3")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ak612")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_brty3")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_u10sd")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mphog")
+text = "Вернуться на главный экран"

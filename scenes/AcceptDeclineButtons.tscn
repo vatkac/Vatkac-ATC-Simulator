@@ -1,0 +1,72 @@
+[gd_scene load_steps=16 format=3 uid="uid://di088vep7t2kw"]
+
+[ext_resource type="Script" uid="uid://bk5g5firxs07g" path="res://scripts/AcceptDeclineButtons.gd" id="1_5xrhq"]
+[ext_resource type="Texture2D" uid="uid://6p83dreiwelh" path="res://assets/textures/down_accept.svg" id="2_gwbjv"]
+[ext_resource type="Texture2D" uid="uid://bxlyoahwvs0cp" path="res://assets/textures/default_decline.svg" id="3_hcrrb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eq0v4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_64f62"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8itwr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vvd16"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bpjvs"]
+
+[sub_resource type="GDScript" id="GDScript_64f62"]
+script/source = "extends Button
+
+signal accepted()
+
+func _pressed() -> void:
+	accepted.emit()
+"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r4lnq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_upm10"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1snph"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_loet5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wl58q"]
+
+[sub_resource type="GDScript" id="GDScript_eq0v4"]
+script/source = "extends Button
+
+signal declined()
+
+func _pressed() -> void:
+	declined.emit()
+"
+
+[node name="AcceptDeclineButtons" type="HBoxContainer" node_paths=PackedStringArray("accept_button", "decline_button")]
+theme_override_constants/separation = 10
+script = ExtResource("1_5xrhq")
+accept_button = NodePath("AcceptButton")
+decline_button = NodePath("DeclineButton")
+
+[node name="AcceptButton" type="Button" parent="."]
+layout_mode = 2
+theme_override_constants/icon_max_width = 28
+theme_override_styles/normal = SubResource("StyleBoxEmpty_eq0v4")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_64f62")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_8itwr")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_vvd16")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bpjvs")
+icon = ExtResource("2_gwbjv")
+icon_alignment = 1
+script = SubResource("GDScript_64f62")
+
+[node name="DeclineButton" type="Button" parent="."]
+layout_mode = 2
+theme_override_constants/icon_max_width = 28
+theme_override_styles/normal = SubResource("StyleBoxEmpty_r4lnq")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_upm10")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_1snph")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_loet5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wl58q")
+icon = ExtResource("3_hcrrb")
+script = SubResource("GDScript_eq0v4")

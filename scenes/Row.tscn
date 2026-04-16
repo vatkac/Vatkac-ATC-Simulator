@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3scn6nwr3r0o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_38el3"]
+
+[node name="Row" type="PanelContainer"]
+custom_minimum_size = Vector2(318, 60)
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_38el3")
+
+[node name="Items" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(318, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 33
+alignment = 1
