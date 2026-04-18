@@ -8,15 +8,19 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="Vatkac ATC [IN DEVELOPMENT]"
 run/main_scene="uid://bsv7s885ioltl"
-config/features=PackedStringArray("4.5", "Mobile")
+config/features=PackedStringArray("4.6", "Mobile")
 
 [autoload]
 
-GlobalEvents="*res://scripts/GlobalEvents.gd"
+GlobalEvents="*res://scripts/global_events.gd"
 
 [display]
 
@@ -31,7 +35,9 @@ enabled=PackedStringArray("res://addons/csv-data-importer/plugin.cfg")
 [gui]
 
 theme/default_font_subpixel_positioning=0
+theme/custom_font="uid://ct123v5bddm61"
 
 [rendering]
 
 renderer/rendering_method="mobile"
+environment/defaults/default_clear_color=Color(0.22745098, 0.22745098, 0.22745098, 1)

@@ -1,11 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkacdcist50rr"]
+[gd_scene format=3 uid="uid://dkacdcist50rr"]
 
-[ext_resource type="FontVariation" uid="uid://cvsxc4w5by87y" path="res://assets/fonts/Raleway-VariableFont.tres" id="1_vcphp"]
-
-[node name="EndObject" type="RichTextLabel"]
+[node name="Label" type="Label" unique_id=637727154]
 custom_minimum_size = Vector2(318, 60)
-theme_override_fonts/normal_font = ExtResource("1_vcphp")
-bbcode_enabled = true
-text = "[font_size=16][color=#bfbfbf]Это всё![/color][/font_size]"
+offset_right = 318.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color(0.7490196, 0.7490196, 0.7490196, 1)
+theme_override_font_sizes/font_size = 12
+text = "Это всё!"
 horizontal_alignment = 1
 vertical_alignment = 1

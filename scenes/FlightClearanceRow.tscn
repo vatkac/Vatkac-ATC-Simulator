@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://bpfqempa5o3rb"]
+
+[ext_resource type="Script" uid="uid://tqmm3k0j0nle" path="res://scripts/flight_clearance_row.gd" id="1_cf3v4"]
+[ext_resource type="FontFile" uid="uid://5a5d58yrxn7e" path="res://assets/fonts/Inder-Regular.ttf" id="2_5q774"]
+[ext_resource type="PackedScene" uid="uid://di088vep7t2kw" path="res://scenes/AcceptDeclineButtons.tscn" id="3_5q774"]
+
+[sub_resource type="FontVariation" id="FontVariation_igq1f"]
+base_font = ExtResource("2_5q774")
+variation_embolden = -0.35
+
+[node name="DataContainer" type="HBoxContainer" unique_id=416810593 node_paths=PackedStringArray("designation_label", "route_label", "runway_label", "time_label", "buttons")]
+custom_minimum_size = Vector2(0, 60)
+offset_right = 318.0
+offset_bottom = 60.0
+theme_override_constants/separation = 33
+alignment = 1
+script = ExtResource("1_cf3v4")
+designation_label = NodePath("Designation & Route/Designation")
+route_label = NodePath("Designation & Route/Route")
+runway_label = NodePath("Runway & Time/Runway")
+time_label = NodePath("Runway & Time/Time")
+buttons = NodePath("AcceptDeclineButtons")
+
+[node name="Designation & Route" type="VBoxContainer" parent="." unique_id=805109587]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Designation" type="Label" parent="Designation & Route" unique_id=1644830170]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 16
+text = "Boeing 737-800"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Route" type="Label" parent="Designation & Route" unique_id=408714336]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.7490196, 0.7490196, 0.7490196, 1)
+theme_override_font_sizes/font_size = 9
+text = "St. Petersburg — Moscow"
+horizontal_alignment = 1
+
+[node name="Runway & Time" type="VBoxContainer" parent="." unique_id=975464313]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Runway" type="Label" parent="Runway & Time" unique_id=268443568]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = SubResource("FontVariation_igq1f")
+theme_override_font_sizes/font_size = 16
+text = "36R"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Time" type="Label" parent="Runway & Time" unique_id=650132714]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.7490196, 0.7490196, 0.7490196, 1)
+theme_override_font_sizes/font_size = 9
+text = "18:34"
+horizontal_alignment = 1
+
+[node name="AcceptDeclineButtons" parent="." unique_id=74814982 instance=ExtResource("3_5q774")]
+layout_mode = 2

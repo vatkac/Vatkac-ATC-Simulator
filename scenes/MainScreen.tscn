@@ -1,12 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://dwtjritg2ax0d"]
+[gd_scene format=3 uid="uid://dwtjritg2ax0d"]
 
 [ext_resource type="PackedScene" uid="uid://cfa2ntix1bdtq" path="res://scenes/TrustMeter.tscn" id="1_ju4p7"]
 [ext_resource type="PackedScene" uid="uid://dscwc7272ciwp" path="res://scenes/Balance.tscn" id="2_svp2y"]
 [ext_resource type="Texture2D" uid="uid://b84swg2x7biva" path="res://assets/textures/runway.svg" id="3_1agfe"]
 [ext_resource type="FontFile" uid="uid://5a5d58yrxn7e" path="res://assets/fonts/Inder-Regular.ttf" id="4_lf8d6"]
 [ext_resource type="Texture2D" uid="uid://44ytw0avykg3" path="res://assets/textures/airplane.svg" id="4_svp2y"]
-[ext_resource type="Script" uid="uid://82m7eb3lcu07" path="res://scenes/Airplane.gd" id="5_1agfe"]
-[ext_resource type="FontVariation" uid="uid://cvsxc4w5by87y" path="res://assets/fonts/Raleway-VariableFont.tres" id="5_50uwr"]
+[ext_resource type="Script" uid="uid://82m7eb3lcu07" path="res://scripts/airplane.gd" id="5_1agfe"]
+[ext_resource type="FontVariation" path="res://assets/fonts/Raleway-VariableFont.tres" id="5_50uwr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_omtq4"]
 bg_color = Color(0.08235294, 0.08235294, 0.08235294, 1)

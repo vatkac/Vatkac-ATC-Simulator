@@ -1,12 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bsv7s885ioltl"]
+[gd_scene format=3 uid="uid://bsv7s885ioltl"]
 
-[ext_resource type="FontVariation" uid="uid://cvsxc4w5by87y" path="res://assets/fonts/Raleway-VariableFont.tres" id="1_4h6wa"]
 [ext_resource type="PackedScene" uid="uid://c5fe1vs2mrqs2" path="res://scenes/Table.tscn" id="2_bloyt"]
 [ext_resource type="PackedScene" uid="uid://cfa2ntix1bdtq" path="res://scenes/TrustMeter.tscn" id="3_bloyt"]
+[ext_resource type="FontVariation" uid="uid://ct123v5bddm61" path="res://assets/fonts/Raleway-Standard.tres" id="3_d4tre"]
 [ext_resource type="PackedScene" uid="uid://dscwc7272ciwp" path="res://scenes/Balance.tscn" id="4_ak612"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_h1e4n"]
-font = ExtResource("1_4h6wa")
 font_size = 40
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_brty3"]
@@ -24,12 +23,12 @@ corner_radius_bottom_left = 80
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mphog"]
 
-[node name="ColorRect" type="ColorRect"]
+[node name="ColorRect" type="ColorRect" unique_id=1595472190]
 offset_right = 486.0
 offset_bottom = 864.0
 color = Color(0.22745098, 0.22745098, 0.22745098, 1)
 
-[node name="TrustMeter" parent="." instance=ExtResource("3_bloyt")]
+[node name="TrustMeter" parent="." unique_id=827993941 instance=ExtResource("3_bloyt")]
 layout_mode = 0
 anchor_left = 0.84156376
 anchor_top = 0.030092593
@@ -42,37 +41,37 @@ offset_bottom = 0.0
 trust = 25
 metadata/_edit_use_anchors_ = true
 
-[node name="Balance" parent="." instance=ExtResource("4_ak612")]
+[node name="Balance" parent="." unique_id=1338347001 instance=ExtResource("4_ak612")]
 layout_mode = 1
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=176530052]
 layout_mode = 0
 offset_left = 93.0
 offset_top = 111.0
 offset_right = 394.0
 offset_bottom = 240.0
+theme_override_fonts/font = ExtResource("3_d4tre")
 text = "Запросы на
 взлет и посадку"
 label_settings = SubResource("LabelSettings_h1e4n")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" parent="." instance=ExtResource("2_bloyt")]
+[node name="table" parent="." unique_id=560220019 instance=ExtResource("2_bloyt")]
 layout_mode = 0
 offset_left = 84.0
 offset_top = 283.0
 offset_right = 402.0
 offset_bottom = 583.0
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." unique_id=551593043]
 custom_minimum_size = Vector2(318, 73)
 layout_mode = 0
 offset_left = 84.0
 offset_top = 624.0
 offset_right = 402.0
 offset_bottom = 697.0
-theme_override_fonts/font = ExtResource("1_4h6wa")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxFlat_brty3")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ak612")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_brty3")

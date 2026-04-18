@@ -1,6 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://di088vep7t2kw"]
+[gd_scene format=3 uid="uid://di088vep7t2kw"]
 
-[ext_resource type="Script" uid="uid://bk5g5firxs07g" path="res://scripts/AcceptDeclineButtons.gd" id="1_5xrhq"]
+[ext_resource type="Script" uid="uid://bk5g5firxs07g" path="res://scripts/accept_decline_buttons.gd" id="1_5xrhq"]
 [ext_resource type="Texture2D" uid="uid://6p83dreiwelh" path="res://assets/textures/down_accept.svg" id="2_gwbjv"]
 [ext_resource type="Texture2D" uid="uid://bxlyoahwvs0cp" path="res://assets/textures/default_decline.svg" id="3_hcrrb"]
 

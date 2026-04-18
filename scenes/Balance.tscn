@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dscwc7272ciwp"]
+[gd_scene format=3 uid="uid://dscwc7272ciwp"]
 
-[ext_resource type="FontVariation" uid="uid://cvsxc4w5by87y" path="res://assets/fonts/Raleway-VariableFont.tres" id="1_4jsyr"]
-[ext_resource type="Script" uid="uid://cloke7ub6im0d" path="res://scripts/Balance.gd" id="1_w45ei"]
+[ext_resource type="Script" uid="uid://cloke7ub6im0d" path="res://scripts/balance.gd" id="1_w45ei"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w45ei"]
 bg_color = Color(0.08235294, 0.08235294, 0.08235294, 1)
@@ -11,7 +10,7 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 corner_detail = 10
 
-[node name="Background" type="PanelContainer" node_paths=PackedStringArray("text_node")]
+[node name="Background" type="PanelContainer" unique_id=579615922 node_paths=PackedStringArray("text_node")]
 custom_minimum_size = Vector2(146, 32)
 anchors_preset = -1
 anchor_left = 0.34979424
@@ -26,9 +25,8 @@ script = ExtResource("1_w45ei")
 text_node = NodePath("Balance")
 metadata/_edit_use_anchors_ = true
 
-[node name="Balance" type="RichTextLabel" parent="."]
+[node name="Balance" type="RichTextLabel" parent="." unique_id=1805620130]
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("1_4jsyr")
 bbcode_enabled = true
 text = "[color=\"#bfbfbf\"][font_size=16]$[/font_size][/color][color=white][font_size=20]73[/font_size][/color]"
 horizontal_alignment = 1

@@ -1,155 +1,63 @@
-extends PanelContainer
+extends VBoxContainer
 
-### ASSIGNED IN INSPECTOR
-@export var rows: Array[PanelContainer]
-@export var table: VBoxContainer
+@export var row_scene: PackedScene;
+@export var end_object_scene: PackedScene;
+@export var max_rows: int = 5;
 
+var data: Array[FlightClearance] = [];
+var end_object: Label;
 
-### PRELOADS
-const BUTTONS = preload("res://scenes/AcceptDeclineButtons.tscn")
-const STANDART_FONT = preload("res://assets/fonts/Raleway-VariableFont.tres")
+func setup_test_data():
+	# Пример 1: Посадка рейса из Берлина
+	var flight1 = FlightClearance.new()
+	flight1.aircraft_designation = "AFL123"
+	flight1.clearance_time = 36000 # 10:00 AM
+	flight1.city1 = "Berlin"
+	flight1.city2 = "Moscow"
+	flight1.runway = "24L"
+	flight1.clearance_type = FlightClearance.ClearanceType.Landing
+	add_row(flight1)
 
-### STYLES
-## Styleboxes
-const EVEN_STYLEBOX: StyleBoxFlat = preload("res://assets/styles/RowStyleboxEven.stylebox")
-const ODD_STYLEBOX: StyleBoxFlat = preload("res://assets/styles/RowStyleboxOdd.stylebox")
+	# Пример 2: Взлет частного джета
+	var flight2 = FlightClearance.new()
+	flight2.aircraft_designation = "G-LEX4"
+	flight2.clearance_time = 36600 # 10:10 AM
+	flight2.city1 = "Moscow"
+	flight2.city2 = "Dubai"
+	flight2.runway = "06R"
+	flight2.clearance_type = FlightClearance.ClearanceType.Takeoff
+	add_row(flight2)
 
-## Text
-# Colors
-const MAIN_TEXT_COLOR: Color = Color.WHITE
-const SUB_TEXT_COLOR: Color = Color("#bfbfbf")
-# Font
-const RUNWAY_FONT_PATH = "res://assets/fonts/Inder-Regular.ttf"
-const MAIN_FONT_SIZE: int = 14
-const SUB_TEXT_SIZE: int = 7
-
-## Other
-const CORNER_RADIUS = 22
-const TEXT1_SIZE = Vector2(123, 35)
-const TEXT2_SIZE = Vector2(36, 36)
-
-
-var cur_row = 0
-var data = []
-var end_obj: RichTextLabel
+	# Пример 3: Посадка тяжелого грузового борта
+	var flight3 = FlightClearance.new()
+	flight3.aircraft_designation = "CGO789"
+	flight3.clearance_time = 37200 # 10:20 AM
+	flight3.city1 = "Beijing"
+	flight3.city2 = "Moscow"
+	flight3.runway = "24L"
+	flight3.clearance_type = FlightClearance.ClearanceType.Landing
+	add_row(flight3)
 
 func _ready() -> void:
-	end_obj = _setup_text_node("[font_size=16][color=#bfbfbf]Это всё![/color][/font_size]", Vector2(318, 60))
-	update_rows_styles()
+	end_object = end_object_scene.instantiate()
+	add_child(end_object)
 	
-	rows[0].add_child(end_obj)
-	
-	# TEST ROWS
-	add_row(
-		build_airplane_and_route_cell("Boeing 747", "Aleksandrovsk-Sakhalinskiy — Yuzhno-Sakhalinsk"), \
-		build_runway_and_time_cell("36R", "15:30")
-	)
-	add_row(
-		build_airplane_and_route_cell("WWWWWWWWWWWWWWWW", "St. Petersburg — Ivanovo"), \
-		build_runway_and_time_cell("36L", "15:00")
-	)
-	add_row(
-		build_airplane_and_route_cell("Beechcraft 18", "Kaliningrad — St. Petersburg"), \
-		build_runway_and_time_cell("18R", "18:18")
-	)
+	setup_test_data()
 
-func build_airplane_and_route_cell(airplane: String, route: String) -> String:
-	var template: String = "[font_size={2}]{0}[/font_size]\n[font_size={3}][color={4}]{1}[/color][/font_size]"
-	return template.format([airplane, route, MAIN_FONT_SIZE, SUB_TEXT_SIZE, SUB_TEXT_COLOR.to_html()])
-
-func build_runway_and_time_cell(runway: String, time: String) -> String:
-	var template: String = "[font_size={2}][font='{5}']{0}[/font][/font_size]\n[font_size={3}][color={4}]{1}[/color][/font_size]"
-	return template.format([runway, time, MAIN_FONT_SIZE, SUB_TEXT_SIZE, SUB_TEXT_COLOR.to_html(), RUNWAY_FONT_PATH])
-
-func _start_delete_animation(row: HBoxContainer) -> PropertyTweener:
-	var tween = create_tween()
-	row.pivot_offset = size / 2
-	
-	tween.tween_property(row, "scale", Vector2(5, 5), .5).set_ease(Tween.EASE_IN_OUT)
-	var property = tween.parallel().tween_property(row, "modulate:a", 0.0, .5).set_ease(Tween.EASE_IN_OUT)
-	
-	return property
-
-func update_rows_styles(from: int=0) -> void:
-	for i in range(from, rows.size()):
-		var row: PanelContainer = rows[i]
-		var stylebox = ODD_STYLEBOX if i % 2 else EVEN_STYLEBOX
-		row.add_theme_stylebox_override("panel", stylebox)
-
-func delete_row(row: PanelContainer) -> void:
-	var items: HBoxContainer = row.get_child(0)
-	_start_delete_animation(items).finished.connect(
-	func():
-		for child in items.get_children(): child.queue_free()
-		table.move_child(row, len(rows) - 1)
-		var pos = rows.find(row)
-		data.remove_at(pos)
-		rows.append(rows.pop_at(pos))
-		update_rows_styles(pos)
-		cur_row -= 1
-	)
-
-func _on_accepted(buttons: HBoxContainer) -> void: 
-	if not buttons.has_meta("PLTableRow"): return
-	var row = buttons.get_meta("PLTableRow")
-	delete_row(row)
-
-func _on_declined(buttons: HBoxContainer) -> void:
-	if not buttons.has_meta("PLTableRow"): return
-	var row = buttons.get_meta("PLTableRow")
-	delete_row(row)
-
-func _setup_text_node(
-	text: String, 
-	text_size: Vector2, 
-	font=STANDART_FONT, 
-	bbcode_enabled=true,
-	vertical_alignment=VERTICAL_ALIGNMENT_CENTER,
-	horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
-) -> RichTextLabel:
-	var node = RichTextLabel.new()
-	
-	node.text = text
-	node.custom_minimum_size = text_size
-	node.add_theme_font_override("normal_font", font)
-	node.bbcode_enabled = bbcode_enabled
-	node.vertical_alignment = vertical_alignment
-	node.horizontal_alignment = horizontal_alignment
-	
-	return node
-
-func _setup_buttons_node(row: PanelContainer) -> HBoxContainer:
-	var buttons_node = BUTTONS.instantiate()
-	buttons_node.set_meta("PLTableRow", row)  # PLT — Permissions for Landing and Takeoff
-	buttons_node.accepted.connect(_on_accepted); buttons_node.declined.connect(_on_declined)
-	
-	return buttons_node
-
-func _move_end_obj() -> void:
-	if cur_row + 1 == len(rows):
-		end_obj.visible = false
-	else:
-		end_obj.reparent(rows[cur_row + 1])
-
-func _setup_row_nodes(text1: String, text2: String) -> Array[Node]:
-	# NODES SETUP
-	var row = rows[cur_row]
-	var text1_node = _setup_text_node(text1, TEXT1_SIZE)
-	var text2_node = _setup_text_node(text2, TEXT2_SIZE)
-	var buttons_node = _setup_buttons_node(row)
-	
-	return [text1_node, text2_node, buttons_node]
-
-func add_row(text1: String, text2: String) -> void:
-	if cur_row >= len(rows):
-		push_error("Cannot add a row, the table is full!")
+func add_row(info: FlightClearance) -> void:
+	if len(data) >= max_rows:
+		push_error("Table overflow!")
 		return
-	_move_end_obj()
 	
-	var items = rows[cur_row].get_child(0)
-	assert(items != null and items.name.to_lower() == "items", "Error while adding a row! Check the row structure — the 1st child must be 'items'.")
+	var new_row: FlightClearanceRow = row_scene.instantiate()
+	if new_row is not FlightClearanceRow:
+		push_error("Row scene's class must be FlightClearanceRow!")
 	
-	for child in _setup_row_nodes(text1, text2):
-		items.add_child(child)
-	data.append([text1, text2])
-	cur_row += 1
+	new_row.set_info(info)
+	data.append(info)
+	
+	add_child(new_row)
+	move_child(new_row, -2)
+	
+	if len(data) == max_rows:
+		end_object.visible = false

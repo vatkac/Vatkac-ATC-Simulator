@@ -1,38 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5fe1vs2mrqs2"]
+[gd_scene format=3 uid="uid://c5fe1vs2mrqs2"]
 
-[ext_resource type="Script" uid="uid://bdb40jbloyaij" path="res://scripts/Table.gd" id="1_kl0hw"]
-[ext_resource type="PackedScene" uid="uid://d3scn6nwr3r0o" path="res://scenes/Row.tscn" id="2_v5i0k"]
+[ext_resource type="Texture2D" uid="uid://n4t1xpathmqj" path="res://assets/textures/table_background.svg" id="1_1euqw"]
+[ext_resource type="PackedScene" uid="uid://bpfqempa5o3rb" path="res://scenes/FlightClearanceRow.tscn" id="1_xa0as"]
+[ext_resource type="Script" uid="uid://bdb40jbloyaij" path="res://scripts/table.gd" id="2_7e6ia"]
+[ext_resource type="PackedScene" uid="uid://dkacdcist50rr" path="res://scenes/EndObject.tscn" id="3_7e6ia"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v5i0k"]
-bg_color = Color(0.3137255, 0.3137255, 0.3137255, 1)
-corner_radius_top_left = 22
-corner_radius_top_right = 22
-corner_radius_bottom_right = 22
-corner_radius_bottom_left = 22
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7q8ky"]
+texture = ExtResource("1_1euqw")
 
-[node name="container" type="PanelContainer" node_paths=PackedStringArray("rows", "table")]
-offset_right = 318.0
-offset_bottom = 300.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_v5i0k")
-script = ExtResource("1_kl0hw")
-rows = [NodePath("table/row"), NodePath("table/row2"), NodePath("table/row3"), NodePath("table/row4"), NodePath("table/row5")]
-table = NodePath("table")
+[node name="Background" type="PanelContainer" unique_id=903302260]
+clip_contents = true
+custom_minimum_size = Vector2(318, 300)
+offset_top = 144.0
+offset_right = 279.0
+offset_bottom = 144.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_7q8ky")
 
-[node name="table" type="VBoxContainer" parent="."]
+[node name="Rows" type="VBoxContainer" parent="." unique_id=842151782]
+custom_minimum_size = Vector2(318, 300)
 layout_mode = 2
+size_flags_vertical = 0
 theme_override_constants/separation = 0
-
-[node name="row" parent="table" instance=ExtResource("2_v5i0k")]
-layout_mode = 2
-
-[node name="row2" parent="table" instance=ExtResource("2_v5i0k")]
-layout_mode = 2
-
-[node name="row3" parent="table" instance=ExtResource("2_v5i0k")]
-layout_mode = 2
-
-[node name="row4" parent="table" instance=ExtResource("2_v5i0k")]
-layout_mode = 2
-
-[node name="row5" parent="table" instance=ExtResource("2_v5i0k")]
-layout_mode = 2
+script = ExtResource("2_7e6ia")
+row_scene = ExtResource("1_xa0as")
+end_object_scene = ExtResource("3_7e6ia")
