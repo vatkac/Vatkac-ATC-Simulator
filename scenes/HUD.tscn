@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://b3lqxy1hfs5im"]
+
+[ext_resource type="PackedScene" uid="uid://cfa2ntix1bdtq" path="res://scenes/TrustMeter.tscn" id="1_efote"]
+[ext_resource type="Script" uid="uid://desi61mg2a27t" path="res://addons/safe_area_rect/safe_area_rect.gd" id="1_vow1y"]
+[ext_resource type="PackedScene" uid="uid://dscwc7272ciwp" path="res://scenes/Balance.tscn" id="2_vow1y"]
+[ext_resource type="Script" uid="uid://x3osad4ngxup" path="res://scripts/time_controller.gd" id="4_7hsmw"]
+[ext_resource type="Script" uid="uid://v6xxvvxy8nnv" path="res://scripts/route_generator.gd" id="5_nysna"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ne771"]
+bg_color = Color(0.08235294, 0.08235294, 0.08235294, 1)
+corner_radius_top_left = 82
+corner_radius_top_right = 82
+corner_radius_bottom_right = 82
+corner_radius_bottom_left = 82
+
+[sub_resource type="FontVariation" id="FontVariation_xxqia"]
+variation_opentype = {
+2003265652: 700
+}
+spacing_top = -4
+spacing_bottom = -4
+
+[sub_resource type="FontVariation" id="FontVariation_gv1iq"]
+variation_opentype = {
+2003265652: 700
+}
+spacing_top = -4
+spacing_bottom = -4
+
+[sub_resource type="FontVariation" id="FontVariation_1and6"]
+variation_opentype = {
+2003265652: 700
+}
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1849571194]
+layer = 10
+
+[node name="SafeAreaRect" type="Control" parent="." unique_id=284438024]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 486.0
+offset_bottom = 94.0
+script = ExtResource("1_vow1y")
+metadata/_custom_type_script = "uid://desi61mg2a27t"
+
+[node name="MarginContainer" type="MarginContainer" parent="SafeAreaRect" unique_id=1857678300]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 94.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="TrustMeter" parent="SafeAreaRect/MarginContainer" unique_id=1174057947 instance=ExtResource("1_efote")]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Balance" parent="SafeAreaRect/MarginContainer" unique_id=579615922 instance=ExtResource("2_vow1y")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ne771")
+
+[node name="date_and_time" type="HBoxContainer" parent="SafeAreaRect/MarginContainer" unique_id=257279035 node_paths=PackedStringArray("time_node")]
+custom_minimum_size = Vector2(99, 44)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 14
+script = ExtResource("4_7hsmw")
+one_ingame_minute_seconds = 1
+shift_duration_hours = 1
+time_node = NodePath("time")
+
+[node name="date" type="VBoxContainer" parent="SafeAreaRect/MarginContainer/date_and_time" unique_id=878533712]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 1
+
+[node name="month_and_day" type="Label" parent="SafeAreaRect/MarginContainer/date_and_time/date" unique_id=1474498121]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.25)
+theme_override_fonts/font = SubResource("FontVariation_xxqia")
+text = "01.01"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="year" type="Label" parent="SafeAreaRect/MarginContainer/date_and_time/date" unique_id=1164161680]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.25)
+theme_override_fonts/font = SubResource("FontVariation_gv1iq")
+text = "2025"
+horizontal_alignment = 1
+
+[node name="time" type="Label" parent="SafeAreaRect/MarginContainer/date_and_time" unique_id=1407608994]
+custom_minimum_size = Vector2(49, 20)
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_1and6")
+text = "08:00"
+
+[node name="Node" type="Node" parent="." unique_id=1170730512]
+script = ExtResource("5_nysna")

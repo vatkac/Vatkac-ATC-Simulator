@@ -15,12 +15,15 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Vatkac ATC [IN DEVELOPMENT]"
-run/main_scene="uid://bsv7s885ioltl"
+run/main_scene="uid://dwtjritg2ax0d"
 config/features=PackedStringArray("4.6", "Mobile")
 
 [autoload]
 
 GlobalEvents="*res://scripts/global_events.gd"
+HUD="*uid://b3lqxy1hfs5im"
+SoundEffectsManager="*uid://clxn6dgwe12tm"
+BackgroundMusicPlayer="*uid://jbmtg7c4bm8l"
 
 [display]
 
@@ -30,7 +33,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/csv-data-importer/plugin.cfg")
+enabled=PackedStringArray("res://addons/csv-data-importer/plugin.cfg", "res://addons/safe_area_rect/plugin.cfg")
 
 [gui]
 

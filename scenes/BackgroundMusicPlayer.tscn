@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://jbmtg7c4bm8l"]
+
+[ext_resource type="AudioStream" uid="uid://w7oiaik4y48k" path="res://assets/sounds/background_music_skyward_bound.mp3" id="1_sumlq"]
+[ext_resource type="Script" uid="uid://clxn6dgwe12tm" path="res://scripts/sound_effects_manager.gd" id="2_pd8vp"]
+[ext_resource type="AudioStream" uid="uid://cahi4817go5bl" path="res://assets/sounds/click.ogg" id="2_tdk7d"]
+
+[node name="background_music_player" type="AudioStreamPlayer" unique_id=351960628]
+stream = ExtResource("1_sumlq")
+autoplay = true
+parameters/looping = true
+
+[node name="sound_effects_player" type="AudioStreamPlayer" parent="." unique_id=948355995]
+stream = ExtResource("2_tdk7d")
+script = ExtResource("2_pd8vp")

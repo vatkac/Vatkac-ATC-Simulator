@@ -1,0 +1,397 @@
+[gd_scene format=3 uid="uid://klwgumijm2p6"]
+
+[ext_resource type="Texture2D" uid="uid://bai4wnfnnjek1" path="res://assets/textures/dropdown_popup_first_stage_background.svg" id="1_0fd7b"]
+[ext_resource type="Shader" uid="uid://cowuqjrn05hhu" path="res://blur.gdshader" id="1_uv27m"]
+[ext_resource type="Texture2D" uid="uid://cv1ubldcunn4h" path="res://assets/icons/dropdown_arrow_icon.svg" id="2_6nc67"]
+[ext_resource type="Texture2D" uid="uid://bwtmdda1ik61x" path="res://assets/icons/check.svg" id="3_87bur"]
+[ext_resource type="Script" uid="uid://ddn0ti5vrqvqt" path="res://scripts/popup.gd" id="3_nhr6j"]
+[ext_resource type="Texture2D" uid="uid://ddpk2hmha3crm" path="res://assets/icons/dropdown_header_icon.svg" id="3_uv27m"]
+[ext_resource type="Texture2D" uid="uid://myvxx8ff6ans" path="res://assets/textures/dropdown_popup_second_stage_background.svg" id="4_7bjr0"]
+[ext_resource type="Script" uid="uid://cfskj1dtpy6em" path="res://scripts/option_button.gd" id="5_7c6a3"]
+[ext_resource type="Texture2D" uid="uid://llj4pwprf3gf" path="res://assets/icons/search.svg" id="5_ixmdw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nhr6j"]
+shader = ExtResource("1_uv27m")
+shader_parameter/blur_amount = 2.50000011875
+shader_parameter/darkness = 0.6000000285
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_87bur"]
+bg_color = Color(0.5764706, 0.5019608, 0.28235295, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uv27m"]
+bg_color = Color(0.5764706, 0.5019608, 0.28235295, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_7bjr0"]
+variation_opentype = {
+2003265652: 500
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7bjr0"]
+bg_color = Color(0.6784314, 0.5921569, 0.34509805, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_resb6"]
+bg_color = Color(0.5764706, 0.5019608, 0.28235295, 1)
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nhr6j"]
+bg_color = Color(0.9098039, 0.7647059, 0.4, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gm53f"]
+bg_color = Color(0.8788089, 0.7298729, 0.34957218, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+corner_detail = 20
+
+[sub_resource type="FontVariation" id="FontVariation_7c6a3"]
+variation_opentype = {
+2003265652: 500
+}
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_resb6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gm53f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hhver"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ixmdw"]
+bg_color = Color(1, 1, 1, 0.5019608)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hhver"]
+bg_color = Color(1, 1, 1, 0.4)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+corner_detail = 20
+
+[sub_resource type="FontVariation" id="FontVariation_uv27m"]
+variation_opentype = {
+2003265652: 700
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7c6a3"]
+bg_color = Color(0.4862745, 0.7764706, 0.5294118, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vjvs5"]
+bg_color = Color(0.35141775, 0.60419095, 0.3913587, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+corner_detail = 20
+
+[sub_resource type="FontVariation" id="FontVariation_nhr6j"]
+variation_opentype = {
+2003265652: 400
+}
+
+[node name="dropdown_popup" type="ColorRect" unique_id=696178330]
+material = SubResource("ShaderMaterial_nhr6j")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6)
+
+[node name="content" type="TextureRect" parent="." unique_id=795655386 node_paths=PackedStringArray("action_button", "agree_button", "picked_option", "main_bar", "search_bar", "search_bar_line_edit", "search_results_container", "option_buttons", "background_node", "blur_node")]
+custom_minimum_size = Vector2(430, 218)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.057613168
+anchor_top = 0.31712964
+anchor_right = 0.9423868
+anchor_bottom = 0.5694444
+offset_bottom = 3.0517578e-05
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_vertical = 3
+texture = ExtResource("1_0fd7b")
+expand_mode = 1
+script = ExtResource("3_nhr6j")
+action_button = NodePath("main_bar/action_button")
+agree_button = NodePath("agree_button")
+picked_option = NodePath("main_bar/city")
+main_bar = NodePath("main_bar")
+search_bar = NodePath("main_bar/search_bar")
+search_bar_line_edit = NodePath("main_bar/search_bar/LineEdit")
+search_results_container = NodePath("clipping_container/search_results")
+option_buttons = [NodePath("clipping_container/search_results/Panel2/city"), NodePath("clipping_container/search_results/Panel3/city"), NodePath("clipping_container/search_results/Panel4/city"), NodePath("clipping_container/search_results/Panel5/city"), NodePath("clipping_container/search_results/Panel6/city")]
+background_node = NodePath(".")
+first_stage_background_texture = ExtResource("1_0fd7b")
+second_stage_background_texture = ExtResource("4_7bjr0")
+blur_node = NodePath("..")
+metadata/_edit_use_anchors_ = true
+
+[node name="clipping_container" type="Control" parent="content" unique_id=401148587]
+clip_contents = true
+anchors_preset = 0
+anchor_left = 0.25581396
+anchor_top = 0.80733943
+anchor_right = 0.74418604
+anchor_bottom = 2.0688074
+metadata/_edit_use_anchors_ = true
+
+[node name="search_results" type="VBoxContainer" parent="content/clipping_container" unique_id=818096071]
+visible = false
+custom_minimum_size = Vector2(210, 275)
+layout_mode = 0
+offset_top = -275.0
+offset_right = 210.0
+theme_override_constants/separation = 0
+
+[node name="Panel" type="Panel" parent="content/clipping_container/search_results" unique_id=577586264]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_styles/panel = SubResource("StyleBoxFlat_87bur")
+
+[node name="Panel2" type="Panel" parent="content/clipping_container/search_results" unique_id=735396516]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_uv27m")
+
+[node name="city" type="Button" parent="content/clipping_container/search_results/Panel2" unique_id=1191000528]
+layout_mode = 0
+offset_right = 210.0
+offset_bottom = 50.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = SubResource("FontVariation_7bjr0")
+theme_override_font_sizes/font_size = 14
+text = "Moscow"
+flat = true
+script = ExtResource("5_7c6a3")
+
+[node name="Panel3" type="Panel" parent="content/clipping_container/search_results" unique_id=35768180]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_7bjr0")
+
+[node name="city" type="Button" parent="content/clipping_container/search_results/Panel3" unique_id=1019469275]
+layout_mode = 0
+offset_right = 210.0
+offset_bottom = 50.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = SubResource("FontVariation_7bjr0")
+theme_override_font_sizes/font_size = 14
+text = "Montreal"
+flat = true
+script = ExtResource("5_7c6a3")
+
+[node name="Panel4" type="Panel" parent="content/clipping_container/search_results" unique_id=367377273]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_uv27m")
+
+[node name="city" type="Button" parent="content/clipping_container/search_results/Panel4" unique_id=952718639]
+layout_mode = 0
+offset_right = 210.0
+offset_bottom = 50.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = SubResource("FontVariation_7bjr0")
+theme_override_font_sizes/font_size = 14
+text = "Montevideo "
+flat = true
+script = ExtResource("5_7c6a3")
+
+[node name="Panel5" type="Panel" parent="content/clipping_container/search_results" unique_id=437596542]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_7bjr0")
+
+[node name="city" type="Button" parent="content/clipping_container/search_results/Panel5" unique_id=1364714123]
+layout_mode = 0
+offset_right = 210.0
+offset_bottom = 50.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = SubResource("FontVariation_7bjr0")
+theme_override_font_sizes/font_size = 14
+text = "Mogadishu"
+flat = true
+script = ExtResource("5_7c6a3")
+
+[node name="Panel6" type="Panel" parent="content/clipping_container/search_results" unique_id=594916700]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_resb6")
+
+[node name="city" type="Button" parent="content/clipping_container/search_results/Panel6" unique_id=826074121]
+layout_mode = 0
+offset_right = 210.0
+offset_bottom = 50.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = SubResource("FontVariation_7bjr0")
+theme_override_font_sizes/font_size = 14
+text = "Monrovia"
+flat = true
+script = ExtResource("5_7c6a3")
+
+[node name="main_bar" type="Button" parent="content" unique_id=36264852]
+custom_minimum_size = Vector2(210, 50)
+layout_mode = 0
+offset_left = 79.0
+offset_top = 151.0
+offset_right = 289.0003
+offset_bottom = 201.0
+theme_override_constants/icon_max_width = 19
+theme_override_styles/normal = SubResource("StyleBoxFlat_nhr6j")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gm53f")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nhr6j")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_nhr6j")
+theme_override_styles/focus = SubResource("StyleBoxFlat_nhr6j")
+icon_alignment = 1
+expand_icon = true
+
+[node name="city" type="Label" parent="content/main_bar" unique_id=140285692]
+layout_mode = 0
+offset_left = 13.0
+offset_right = 160.0
+offset_bottom = 50.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_7bjr0")
+theme_override_font_sizes/font_size = 14
+text = "St. Petersburg"
+vertical_alignment = 1
+
+[node name="search_bar" type="HBoxContainer" parent="content/main_bar" unique_id=586204260]
+visible = false
+layout_mode = 0
+offset_left = 18.0
+offset_right = 160.0
+offset_bottom = 50.0
+theme_override_constants/separation = 6
+
+[node name="icon" type="TextureRect" parent="content/main_bar/search_bar" unique_id=2074799553]
+modulate = Color(1, 1, 1, 0.5)
+custom_minimum_size = Vector2(14, 14)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("5_ixmdw")
+expand_mode = 1
+
+[node name="LineEdit" type="LineEdit" parent="content/main_bar/search_bar" unique_id=167429535]
+custom_minimum_size = Vector2(122, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/font_placeholder_color = Color(0, 0, 0, 0.5019608)
+theme_override_colors/caret_color = Color(0, 0, 0, 0.5)
+theme_override_fonts/font = SubResource("FontVariation_7c6a3")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxEmpty_resb6")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_gm53f")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hhver")
+placeholder_text = "Start searching..."
+context_menu_enabled = false
+emoji_menu_enabled = false
+middle_mouse_paste_enabled = false
+flat = true
+caret_blink = true
+caret_blink_interval = 0.5
+
+[node name="action_button" type="Button" parent="content/main_bar" unique_id=574693320]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -25.0
+offset_bottom = 25.0
+grow_horizontal = 0
+grow_vertical = 2
+pivot_offset = Vector2(25, 25)
+theme_override_constants/icon_max_width = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_ixmdw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hhver")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ixmdw")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ixmdw")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ixmdw")
+icon = ExtResource("2_6nc67")
+icon_alignment = 1
+expand_icon = true
+
+[node name="header" type="HBoxContainer" parent="content" unique_id=1758352786]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -52.5
+offset_top = 61.619995
+offset_right = 52.50006
+offset_bottom = 101.6201
+grow_horizontal = 2
+theme_override_constants/separation = 7
+
+[node name="icon" type="TextureRect" parent="content/header" unique_id=1379161198]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_uv27m")
+expand_mode = 1
+
+[node name="text" type="Label" parent="content/header" unique_id=1951303539]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = SubResource("FontVariation_uv27m")
+theme_override_font_sizes/font_size = 24
+text = "Choice"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="agree_button" type="Button" parent="content" unique_id=418708229]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+offset_left = 299.0
+offset_top = 151.0
+offset_right = 349.0
+offset_bottom = 201.0
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 1)
+theme_override_constants/icon_max_width = 19
+theme_override_styles/normal = SubResource("StyleBoxFlat_7c6a3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vjvs5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7c6a3")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_7c6a3")
+theme_override_styles/focus = SubResource("StyleBoxFlat_7c6a3")
+icon = ExtResource("3_87bur")
+icon_alignment = 1
+expand_icon = true
+
+[node name="question" type="Label" parent="content" unique_id=504822103]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 90.0
+offset_right = 379.0
+offset_bottom = 146.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.85)
+theme_override_fonts/font = SubResource("FontVariation_nhr6j")
+theme_override_font_sizes/font_size = 14
+text = "Find the required city in our database:"
+horizontal_alignment = 1
+vertical_alignment = 1

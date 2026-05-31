@@ -12,11 +12,12 @@ texture = ExtResource("1_1euqw")
 clip_contents = true
 custom_minimum_size = Vector2(318, 300)
 offset_top = 144.0
-offset_right = 279.0
-offset_bottom = 144.0
+offset_right = 318.0
+offset_bottom = 444.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_7q8ky")
 
 [node name="Rows" type="VBoxContainer" parent="." unique_id=842151782]
+clip_contents = true
 custom_minimum_size = Vector2(318, 300)
 layout_mode = 2
 size_flags_vertical = 0

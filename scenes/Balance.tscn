@@ -4,30 +4,52 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w45ei"]
 bg_color = Color(0.08235294, 0.08235294, 0.08235294, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+corner_radius_top_left = 82
+corner_radius_top_right = 82
+corner_radius_bottom_right = 82
+corner_radius_bottom_left = 82
 corner_detail = 10
 
-[node name="Background" type="PanelContainer" unique_id=579615922 node_paths=PackedStringArray("text_node")]
-custom_minimum_size = Vector2(146, 32)
+[sub_resource type="FontVariation" id="FontVariation_2gscx"]
+variation_opentype = {
+2003265652: 700
+}
+
+[sub_resource type="FontVariation" id="FontVariation_r7fi8"]
+variation_opentype = {
+2003265652: 700
+}
+
+[node name="background" type="PanelContainer" unique_id=579615922 node_paths=PackedStringArray("text_node")]
+custom_minimum_size = Vector2(146, 44)
 anchors_preset = -1
 anchor_left = 0.34979424
-anchor_top = 0.041666668
+anchor_top = 0.028935185
 anchor_right = 0.6502058
-anchor_bottom = 0.0787037
+anchor_bottom = 0.07986111
 grow_horizontal = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_w45ei")
 script = ExtResource("1_w45ei")
-text_node = NodePath("Balance")
+text_node = NodePath("balance/number")
 metadata/_edit_use_anchors_ = true
 
-[node name="Balance" type="RichTextLabel" parent="." unique_id=1805620130]
+[node name="balance" type="HBoxContainer" parent="." unique_id=467670931]
 layout_mode = 2
-bbcode_enabled = true
-text = "[color=\"#bfbfbf\"][font_size=16]$[/font_size][/color][color=white][font_size=20]73[/font_size][/color]"
-horizontal_alignment = 1
-vertical_alignment = 1
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+
+[node name="dollar_sign" type="Label" parent="balance" unique_id=1435721605]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7490196, 0.7490196, 0.7490196, 1)
+theme_override_fonts/font = SubResource("FontVariation_2gscx")
+theme_override_font_sizes/font_size = 20
+text = "$"
+
+[node name="number" type="Label" parent="balance" unique_id=1984559042]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_r7fi8")
+theme_override_font_sizes/font_size = 20
+text = "18"

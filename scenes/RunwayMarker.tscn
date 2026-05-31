@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://cgbuay55gd4fj"]
+
+[ext_resource type="Texture2D" uid="uid://bwwssr8mxrqcm" path="res://assets/icons/arrow_up_outline.svg" id="1_1yxse"]
+[ext_resource type="Script" uid="uid://daxebp1u4f82q" path="res://scripts/runway_marker.gd" id="1_ywacm"]
+[ext_resource type="Texture2D" uid="uid://gguip75013ig" path="res://assets/icons/arrow_down_outline.svg" id="3_dwbmh"]
+
+[sub_resource type="FontVariation" id="FontVariation_ywacm"]
+variation_opentype = {
+2003265652: 700
+}
+
+[node name="marker" type="Control" unique_id=2071618796 node_paths=PackedStringArray("icon", "time_label")]
+custom_minimum_size = Vector2(67, 55)
+layout_mode = 3
+anchor_right = 0.13786009
+anchor_bottom = 0.06365741
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("1_ywacm")
+icon = NodePath("HBoxContainer/icon")
+time_label = NodePath("HBoxContainer/time")
+arrow_up = ExtResource("1_1yxse")
+arrow_down = ExtResource("3_dwbmh")
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=832890927]
+layout_mode = 0
+offset_right = 67.0
+offset_bottom = 25.0
+size_flags_vertical = 0
+theme_override_constants/separation = 7
+
+[node name="icon" type="TextureRect" parent="HBoxContainer" unique_id=784319670]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_1yxse")
+expand_mode = 1
+
+[node name="time" type="Label" parent="HBoxContainer" unique_id=1600772583]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_ywacm")
+text = "17:20"
+vertical_alignment = 1

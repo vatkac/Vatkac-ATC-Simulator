@@ -1,4 +1,4 @@
-extends HBoxContainer
+extends MarginContainer
 class_name FlightClearanceRow
 
 @export var info: FlightClearance
@@ -35,6 +35,7 @@ func set_info(clearance: FlightClearance) -> void:
 		FlightClearance.ClearanceType.Takeoff: icon_type = AcceptDeclineButtons.ButtonTypes.UP
 		
 	buttons.update_button_icon(icon_type)
+	print(icon_type)
 
 ## Removes the row from the table and emits the corresponding global signal.
 func on_desicion_made(accepted: bool) -> void:

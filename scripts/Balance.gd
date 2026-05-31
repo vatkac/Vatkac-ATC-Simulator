@@ -1,12 +1,11 @@
 extends PanelContainer
 
-const TEMPLATE = '[color="#bfbfbf"][font_size=16]$[/font_size][/color][color=white][font_size=20]%d[/font_size][/color]'
-
-@export var text_node: RichTextLabel
+@export var text_node: Label
 @export var balance: int
+
 func _ready() -> void:
-	_set_balance(518)
+	_set_balance(0)
 
 func _set_balance(new: int) -> void:
-	text_node.text = TEMPLATE % [new]
+	text_node.text = str(new)
 	balance = new

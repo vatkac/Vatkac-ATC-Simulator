@@ -22,6 +22,5 @@ func update_button_icon(type: ButtonTypes):
 		ButtonTypes.DOWN: accept_button.icon = DOWN
 
 func _ready() -> void:
-	update_button_icon(ButtonTypes.DEFAULT)
 	accept_button.pressed.connect(accepted.emit)
 	decline_button.pressed.connect(declined.emit)

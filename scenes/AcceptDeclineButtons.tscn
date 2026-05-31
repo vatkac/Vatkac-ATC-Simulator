@@ -42,13 +42,13 @@ func _pressed() -> void:
 	declined.emit()
 "
 
-[node name="AcceptDeclineButtons" type="HBoxContainer" node_paths=PackedStringArray("accept_button", "decline_button")]
+[node name="AcceptDeclineButtons" type="HBoxContainer" unique_id=539921711 node_paths=PackedStringArray("accept_button", "decline_button")]
 theme_override_constants/separation = 10
 script = ExtResource("1_5xrhq")
 accept_button = NodePath("AcceptButton")
 decline_button = NodePath("DeclineButton")
 
-[node name="AcceptButton" type="Button" parent="."]
+[node name="AcceptButton" type="Button" parent="." unique_id=700645413]
 layout_mode = 2
 theme_override_constants/icon_max_width = 28
 theme_override_styles/normal = SubResource("StyleBoxEmpty_eq0v4")
@@ -60,7 +60,7 @@ icon = ExtResource("2_gwbjv")
 icon_alignment = 1
 script = SubResource("GDScript_64f62")
 
-[node name="DeclineButton" type="Button" parent="."]
+[node name="DeclineButton" type="Button" parent="." unique_id=1490096212]
 layout_mode = 2
 theme_override_constants/icon_max_width = 28
 theme_override_styles/normal = SubResource("StyleBoxEmpty_r4lnq")
