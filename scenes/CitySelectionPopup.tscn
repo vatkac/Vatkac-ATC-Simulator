@@ -1,17 +1,17 @@
 [gd_scene format=3 uid="uid://klwgumijm2p6"]
 
-[ext_resource type="Texture2D" uid="uid://bai4wnfnnjek1" path="res://assets/textures/dropdown_popup_first_stage_background.svg" id="1_0fd7b"]
-[ext_resource type="Shader" uid="uid://cowuqjrn05hhu" path="res://blur.gdshader" id="1_uv27m"]
-[ext_resource type="Texture2D" uid="uid://cv1ubldcunn4h" path="res://assets/icons/dropdown_arrow_icon.svg" id="2_6nc67"]
-[ext_resource type="Texture2D" uid="uid://bwtmdda1ik61x" path="res://assets/icons/check.svg" id="3_87bur"]
-[ext_resource type="Script" uid="uid://ddn0ti5vrqvqt" path="res://scripts/popup.gd" id="3_nhr6j"]
-[ext_resource type="Texture2D" uid="uid://ddpk2hmha3crm" path="res://assets/icons/dropdown_header_icon.svg" id="3_uv27m"]
-[ext_resource type="Texture2D" uid="uid://myvxx8ff6ans" path="res://assets/textures/dropdown_popup_second_stage_background.svg" id="4_7bjr0"]
-[ext_resource type="Script" uid="uid://cfskj1dtpy6em" path="res://scripts/option_button.gd" id="5_7c6a3"]
-[ext_resource type="Texture2D" uid="uid://llj4pwprf3gf" path="res://assets/icons/search.svg" id="5_ixmdw"]
+[ext_resource type="Shader" uid="uid://cowuqjrn05hhu" path="res://blur.gdshader" id="1_0rxde"]
+[ext_resource type="Texture2D" uid="uid://bai4wnfnnjek1" path="res://assets/textures/dropdown_popup_first_stage_background.svg" id="2_8v3r7"]
+[ext_resource type="Script" uid="uid://ddn0ti5vrqvqt" path="res://scripts/city_selection_popup.gd" id="3_5qxd5"]
+[ext_resource type="Texture2D" uid="uid://myvxx8ff6ans" path="res://assets/textures/dropdown_popup_second_stage_background.svg" id="4_7igt5"]
+[ext_resource type="Script" uid="uid://cfskj1dtpy6em" path="res://scripts/option_button.gd" id="5_i4j0i"]
+[ext_resource type="Texture2D" uid="uid://llj4pwprf3gf" path="res://assets/icons/search.svg" id="6_x03p3"]
+[ext_resource type="Texture2D" uid="uid://cv1ubldcunn4h" path="res://assets/icons/dropdown_arrow_icon.svg" id="7_7mswl"]
+[ext_resource type="Texture2D" uid="uid://ddpk2hmha3crm" path="res://assets/icons/dropdown_header_icon.svg" id="8_pxifj"]
+[ext_resource type="Texture2D" uid="uid://bwtmdda1ik61x" path="res://assets/icons/check.svg" id="9_wwokv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nhr6j"]
-shader = ExtResource("1_uv27m")
+shader = ExtResource("1_0rxde")
 shader_parameter/blur_amount = 2.50000011875
 shader_parameter/darkness = 0.6000000285
 
@@ -123,9 +123,9 @@ anchor_bottom = 0.5694444
 offset_bottom = 3.0517578e-05
 pivot_offset_ratio = Vector2(0.5, 0.5)
 size_flags_vertical = 3
-texture = ExtResource("1_0fd7b")
+texture = ExtResource("2_8v3r7")
 expand_mode = 1
-script = ExtResource("3_nhr6j")
+script = ExtResource("3_5qxd5")
 action_button = NodePath("main_bar/action_button")
 agree_button = NodePath("agree_button")
 picked_option = NodePath("main_bar/city")
@@ -135,8 +135,8 @@ search_bar_line_edit = NodePath("main_bar/search_bar/LineEdit")
 search_results_container = NodePath("clipping_container/search_results")
 option_buttons = [NodePath("clipping_container/search_results/Panel2/city"), NodePath("clipping_container/search_results/Panel3/city"), NodePath("clipping_container/search_results/Panel4/city"), NodePath("clipping_container/search_results/Panel5/city"), NodePath("clipping_container/search_results/Panel6/city")]
 background_node = NodePath(".")
-first_stage_background_texture = ExtResource("1_0fd7b")
-second_stage_background_texture = ExtResource("4_7bjr0")
+first_stage_background_texture = ExtResource("2_8v3r7")
+second_stage_background_texture = ExtResource("4_7igt5")
 blur_node = NodePath("..")
 metadata/_edit_use_anchors_ = true
 
@@ -178,7 +178,7 @@ theme_override_fonts/font = SubResource("FontVariation_7bjr0")
 theme_override_font_sizes/font_size = 14
 text = "Moscow"
 flat = true
-script = ExtResource("5_7c6a3")
+script = ExtResource("5_i4j0i")
 
 [node name="Panel3" type="Panel" parent="content/clipping_container/search_results" unique_id=35768180]
 custom_minimum_size = Vector2(0, 50)
@@ -195,7 +195,7 @@ theme_override_fonts/font = SubResource("FontVariation_7bjr0")
 theme_override_font_sizes/font_size = 14
 text = "Montreal"
 flat = true
-script = ExtResource("5_7c6a3")
+script = ExtResource("5_i4j0i")
 
 [node name="Panel4" type="Panel" parent="content/clipping_container/search_results" unique_id=367377273]
 custom_minimum_size = Vector2(0, 50)
@@ -212,7 +212,7 @@ theme_override_fonts/font = SubResource("FontVariation_7bjr0")
 theme_override_font_sizes/font_size = 14
 text = "Montevideo "
 flat = true
-script = ExtResource("5_7c6a3")
+script = ExtResource("5_i4j0i")
 
 [node name="Panel5" type="Panel" parent="content/clipping_container/search_results" unique_id=437596542]
 custom_minimum_size = Vector2(0, 50)
@@ -229,7 +229,7 @@ theme_override_fonts/font = SubResource("FontVariation_7bjr0")
 theme_override_font_sizes/font_size = 14
 text = "Mogadishu"
 flat = true
-script = ExtResource("5_7c6a3")
+script = ExtResource("5_i4j0i")
 
 [node name="Panel6" type="Panel" parent="content/clipping_container/search_results" unique_id=594916700]
 custom_minimum_size = Vector2(0, 50)
@@ -246,7 +246,7 @@ theme_override_fonts/font = SubResource("FontVariation_7bjr0")
 theme_override_font_sizes/font_size = 14
 text = "Monrovia"
 flat = true
-script = ExtResource("5_7c6a3")
+script = ExtResource("5_i4j0i")
 
 [node name="main_bar" type="Button" parent="content" unique_id=36264852]
 custom_minimum_size = Vector2(210, 50)
@@ -272,7 +272,7 @@ offset_bottom = 50.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_7bjr0")
 theme_override_font_sizes/font_size = 14
-text = "St. Petersburg"
+text = "London"
 vertical_alignment = 1
 
 [node name="search_bar" type="HBoxContainer" parent="content/main_bar" unique_id=586204260]
@@ -289,7 +289,7 @@ custom_minimum_size = Vector2(14, 14)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("5_ixmdw")
+texture = ExtResource("6_x03p3")
 expand_mode = 1
 
 [node name="LineEdit" type="LineEdit" parent="content/main_bar/search_bar" unique_id=167429535]
@@ -332,7 +332,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_hhver")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ixmdw")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_ixmdw")
 theme_override_styles/focus = SubResource("StyleBoxFlat_ixmdw")
-icon = ExtResource("2_6nc67")
+icon = ExtResource("7_7mswl")
 icon_alignment = 1
 expand_icon = true
 
@@ -353,7 +353,7 @@ custom_minimum_size = Vector2(18, 18)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("3_uv27m")
+texture = ExtResource("8_pxifj")
 expand_mode = 1
 
 [node name="text" type="Label" parent="content/header" unique_id=1951303539]
@@ -361,7 +361,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = SubResource("FontVariation_uv27m")
 theme_override_font_sizes/font_size = 24
-text = "Choice"
+text = "City choice"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -379,7 +379,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_vjvs5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_7c6a3")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_7c6a3")
 theme_override_styles/focus = SubResource("StyleBoxFlat_7c6a3")
-icon = ExtResource("3_87bur")
+icon = ExtResource("9_wwokv")
 icon_alignment = 1
 expand_icon = true
 
@@ -392,6 +392,7 @@ offset_bottom = 146.0
 theme_override_colors/font_color = Color(1, 1, 1, 0.85)
 theme_override_fonts/font = SubResource("FontVariation_nhr6j")
 theme_override_font_sizes/font_size = 14
-text = "Find the required city in our database:"
+text = "Welcome! Pick a city where you want to work:"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3

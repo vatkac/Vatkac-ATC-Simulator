@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://7gy8obbnandj"]
+
+[ext_resource type="Texture2D" uid="uid://44ytw0avykg3" path="res://assets/textures/airplane.svg" id="1_ocrru"]
+[ext_resource type="Script" uid="uid://82m7eb3lcu07" path="res://scripts/airplane.gd" id="2_5gl8c"]
+[ext_resource type="AudioStream" uid="uid://cljnb1trfphy6" path="res://assets/sounds/landing.mp3" id="3_7f0in"]
+[ext_resource type="AudioStream" uid="uid://dotiotnposqdn" path="res://assets/sounds/takeoff.mp3" id="3_ajx5m"]
+
+[node name="Airplane" type="TextureRect" unique_id=1560585526 node_paths=PackedStringArray("shadow", "LT_sound_player")]
+custom_minimum_size = Vector2(89.198, 84)
+custom_maximum_size = Vector2(89.198, 84)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -44.599
+offset_top = -84.0
+offset_right = 44.599
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.59, 1.59)
+pivot_offset_ratio = Vector2(0.5, 1)
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("1_ocrru")
+expand_mode = 3
+script = ExtResource("2_5gl8c")
+takeoff_end_y = 846.0
+landing_start_y = 630.0
+shadow = NodePath("Shadow")
+LT_sound_player = NodePath("LTSound")
+landing = ExtResource("3_7f0in")
+takeoff = ExtResource("3_ajx5m")
+opacity_animation_duration_seconds = 0.8
+
+[node name="Shadow" type="TextureRect" parent="." unique_id=1832599094]
+modulate = Color(1, 1, 1, 0.5)
+custom_minimum_size = Vector2(89.198, 84)
+custom_maximum_size = Vector2(89.198, 84)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -44.599
+offset_top = -84.0
+offset_right = 44.599
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.3, 1.3)
+pivot_offset_ratio = Vector2(0.5, 1)
+texture = ExtResource("1_ocrru")
+expand_mode = 3
+
+[node name="LTSound" type="AudioStreamPlayer" parent="." unique_id=789467473]
+stream = ExtResource("3_ajx5m")
+volume_db = -9.5

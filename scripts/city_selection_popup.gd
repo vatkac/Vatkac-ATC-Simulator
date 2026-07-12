@@ -34,17 +34,30 @@ var current_stage := Stage.OPTION_PICKED
 var cities: PackedStringArray
 var are_search_results_minimized := false
 var search_results_tween: Tween
+var show_hide_tween: Tween
 
 func _ready() -> void:
 	action_button.pressed.connect(on_action_button_pressed)
 	search_bar_line_edit.text_changed.connect(update_search_results)
 	agree_button.pressed.connect(confirm_option)
 	GlobalEvents.search_option_picked.connect(pick_option)
+	
 	cities = load_cities()
+	self.scale = Vector2.ZERO
+	blur_node.material.set_shader_parameter("blur_amount", 0.0)
+	blur_node.material.set_shader_parameter("darkness", 0.0)
+	play_show_animation()
 
 func load_cities() -> PackedStringArray:
-	var file = FileAccess.open("res://assets/cities.txt", FileAccess.READ)
-	return file.get_as_text().split("\n")
+	var config := ConfigFile.new()
+	var error = config.load("res://assets/cities_data.cfg")
+	
+	if error == OK:
+		var packed_array = config.get_value("Data", "cities") as PackedStringArray
+		return packed_array
+			
+	push_error("Error while loading cities!")
+	return []
 
 func switch_stage(new_stage: Stage):
 	current_stage = new_stage
@@ -118,21 +131,26 @@ func pick_option(option: String) -> void:
 	picked_option.text = option
 	switch_stage(Stage.OPTION_PICKED)
 
+func play_show_animation() -> void:
+	if show_hide_tween and show_hide_tween.is_running() and show_hide_tween.is_valid(): return
+	show_hide_tween = create_tween()
+	show_hide_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+	
+	visible = true
+	show_hide_tween.tween_property(self, "scale", Vector2.ONE, 0.5)
+	show_hide_tween.parallel().tween_property(blur_node, "material:shader_parameter/blur_amount", 2.5, 0.5)
+	show_hide_tween.parallel().tween_property(blur_node, "material:shader_parameter/darkness", 0.6, 0.5)
+
 func play_self_destroy_animation() -> void:
-	var tween = create_tween()
-	tween.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_BACK)
-	tween.tween_property(self, "scale", Vector2.ZERO, 0.5)
-	tween.parallel().tween_property(blur_node, "material:shader_parameter/blur_amount", 0.0, 0.5)
-	tween.parallel().tween_property(blur_node, "material:shader_parameter/darkness", 0.0, 0.5)
-	tween.tween_callback(func(): blur_node.queue_free())
+	if show_hide_tween and show_hide_tween.is_running() and show_hide_tween.is_valid(): return
+	show_hide_tween = create_tween()
+	show_hide_tween.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_BACK)
+	show_hide_tween.tween_property(self, "scale", Vector2.ZERO, 0.5)
+	show_hide_tween.parallel().tween_property(blur_node, "material:shader_parameter/blur_amount", 0.0, 0.5)
+	show_hide_tween.parallel().tween_property(blur_node, "material:shader_parameter/darkness", 0.0, 0.5)
+	show_hide_tween.tween_callback(func(): blur_node.queue_free(); UserData.set_city(picked_option.text))
 
 func confirm_option() -> void:
 	GlobalEvents.dropdown_option_picked.emit(picked_option.text)
 	agree_button.disabled = true
-	print(picked_option.text)
 	play_self_destroy_animation()
-
-# yaay i did it
-# kinda proud of it
-# oh it's 1 am
-# good night y'all (i mean, myself. who am i talking to?)

@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://desi61mg2a27t" path="res://addons/safe_area_rect/safe_area_rect.gd" id="1_vow1y"]
 [ext_resource type="PackedScene" uid="uid://dscwc7272ciwp" path="res://scenes/Balance.tscn" id="2_vow1y"]
 [ext_resource type="Script" uid="uid://x3osad4ngxup" path="res://scripts/time_controller.gd" id="4_7hsmw"]
-[ext_resource type="Script" uid="uid://v6xxvvxy8nnv" path="res://scripts/route_generator.gd" id="5_nysna"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ne771"]
 bg_color = Color(0.08235294, 0.08235294, 0.08235294, 1)
@@ -70,8 +69,6 @@ layout_mode = 2
 size_flags_horizontal = 8
 theme_override_constants/separation = 14
 script = ExtResource("4_7hsmw")
-one_ingame_minute_seconds = 1
-shift_duration_hours = 1
 time_node = NodePath("time")
 
 [node name="date" type="VBoxContainer" parent="SafeAreaRect/MarginContainer/date_and_time" unique_id=878533712]
@@ -100,6 +97,3 @@ custom_minimum_size = Vector2(49, 20)
 layout_mode = 2
 theme_override_fonts/font = SubResource("FontVariation_1and6")
 text = "08:00"
-
-[node name="Node" type="Node" parent="." unique_id=1170730512]
-script = ExtResource("5_nysna")

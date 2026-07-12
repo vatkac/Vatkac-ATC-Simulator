@@ -24,10 +24,10 @@ func set_info(clearance: FlightClearance) -> void:
 		return
 	
 	current_clearance = clearance
-	designation_label.text = clearance.aircraft_designation
+	designation_label.text = clearance.aircraft_callsign
 	route_label.text = clearance.city1 + " — " + clearance.city2
 	runway_label.text = clearance.runway
-	time_label.text = "12:00"  # TODO: Use real data when implement the time system.
+	time_label.text = clearance.clearance_time
 	
 	var icon_type: AcceptDeclineButtons.ButtonTypes
 	match clearance.clearance_type:
@@ -35,10 +35,10 @@ func set_info(clearance: FlightClearance) -> void:
 		FlightClearance.ClearanceType.Takeoff: icon_type = AcceptDeclineButtons.ButtonTypes.UP
 		
 	buttons.update_button_icon(icon_type)
-	print(icon_type)
 
 ## Removes the row from the table and emits the corresponding global signal.
 func on_desicion_made(accepted: bool) -> void:
+	UserData.pending_clearances.erase(current_clearance)
 	if accepted: GlobalEvents.flight_clearance_accepted.emit(current_clearance)
 	else: GlobalEvents.flight_clearance_declined.emit(current_clearance)
 	play_delete_animation()

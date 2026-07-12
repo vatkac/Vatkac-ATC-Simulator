@@ -4,7 +4,7 @@ extends PanelContainer
 @export var balance: int
 
 func _ready() -> void:
-	_set_balance(0)
+	_set_balance(UserData.current_balance)
 
 func _set_balance(new: int) -> void:
 	text_node.text = str(new)

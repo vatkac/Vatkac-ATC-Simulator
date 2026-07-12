@@ -2,24 +2,17 @@
 
 [ext_resource type="PackedScene" uid="uid://c5fe1vs2mrqs2" path="res://scenes/Table.tscn" id="2_bloyt"]
 [ext_resource type="FontVariation" uid="uid://ct123v5bddm61" path="res://assets/fonts/Raleway-Standard.tres" id="3_d4tre"]
+[ext_resource type="Script" uid="uid://casdppfqlufpp" path="res://scripts/hider.gd" id="3_tro4p"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_h1e4n"]
 font_size = 40
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_brty3"]
-bg_color = Color(0.08235294, 0.08235294, 0.08235294, 1)
+bg_color = Color(0.04395193, 0.04395193, 0.04395192, 1)
 corner_radius_top_left = 80
 corner_radius_top_right = 80
 corner_radius_bottom_right = 80
 corner_radius_bottom_left = 80
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ak612"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_brty3"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u10sd"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mphog"]
 
 [node name="ColorRect" type="ColorRect" unique_id=1595472190]
 offset_right = 486.0
@@ -46,7 +39,7 @@ offset_top = 283.0
 offset_right = 402.0
 offset_bottom = 583.0
 
-[node name="Button" type="Button" parent="." unique_id=551593043]
+[node name="Button" type="Button" parent="." unique_id=551593043 node_paths=PackedStringArray("root")]
 custom_minimum_size = Vector2(318, 73)
 layout_mode = 0
 offset_left = 84.0
@@ -55,8 +48,10 @@ offset_right = 402.0
 offset_bottom = 697.0
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxFlat_brty3")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_ak612")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_brty3")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_u10sd")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_mphog")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_brty3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_brty3")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_brty3")
+theme_override_styles/focus = SubResource("StyleBoxFlat_brty3")
 text = "Вернуться на главный экран"
+script = ExtResource("3_tro4p")
+root = NodePath("..")

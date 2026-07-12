@@ -42,12 +42,15 @@ horizontal_alignment = 1
 vertical_alignment = 2
 
 [node name="Route" type="Label" parent="HBoxContainer/Designation & Route" unique_id=408714336]
+custom_minimum_size = Vector2(115, 12)
+custom_maximum_size = Vector2(115, 27)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.7490196, 0.7490196, 0.7490196, 1)
 theme_override_font_sizes/font_size = 9
 text = "St. Petersburg — Moscow"
 horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="Runway & Time" type="VBoxContainer" parent="HBoxContainer" unique_id=975464313]
 custom_minimum_size = Vector2(30, 0)

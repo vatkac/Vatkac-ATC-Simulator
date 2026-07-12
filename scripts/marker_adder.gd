@@ -11,7 +11,7 @@ func _ready() -> void:
 	pressed.connect(
 		func():
 			if markers_container.get_child_count() >= max_markers: return
-			configuration_popup.play_show_animation();
+			configuration_popup.play_show_animation()
 			started_configuring_marker = true
 	)
 	GlobalEvents.marker_configuration_cancelled.connect(func(): started_configuring_marker = false)

@@ -4,12 +4,20 @@
 [ext_resource type="Texture2D" uid="uid://b84swg2x7biva" path="res://assets/textures/runway.svg" id="3_1agfe"]
 [ext_resource type="Script" uid="uid://0lvve2vnb7ny" path="res://scripts/marker_adder.gd" id="3_omtq4"]
 [ext_resource type="FontFile" uid="uid://5a5d58yrxn7e" path="res://assets/fonts/Inder-Regular.ttf" id="4_lf8d6"]
-[ext_resource type="Texture2D" uid="uid://44ytw0avykg3" path="res://assets/textures/airplane.svg" id="4_svp2y"]
-[ext_resource type="Script" uid="uid://82m7eb3lcu07" path="res://scripts/airplane.gd" id="5_1agfe"]
+[ext_resource type="Script" uid="uid://bsbn4vvr14y67" path="res://scripts/runway.gd" id="5_ms6rp"]
+[ext_resource type="PackedScene" uid="uid://7gy8obbnandj" path="res://scenes/Airplane.tscn" id="7_nkv16"]
 [ext_resource type="Texture2D" uid="uid://cvkl2morapi01" path="res://assets/icons/add.svg" id="8_50uwr"]
+[ext_resource type="Script" uid="uid://ctys4b8vxqnej" path="res://scripts/LTScreenButton.gd" id="9_nkv16"]
 [ext_resource type="Texture2D" uid="uid://pk4kid1mt2fj" path="res://assets/icons/settings.svg" id="9_omtq4"]
 [ext_resource type="Texture2D" uid="uid://celwy05cgw5o" path="res://assets/icons/shop.svg" id="10_d0kku"]
 [ext_resource type="PackedScene" uid="uid://cikut3i5bid6j" path="res://scenes/MarkerConfigurationPopup.tscn" id="11_d0kku"]
+[ext_resource type="PackedScene" uid="uid://b3lqxy1hfs5im" path="res://scenes/HUD.tscn" id="11_ms6rp"]
+[ext_resource type="Script" uid="uid://d0rj85p3uk3tg" path="res://scripts/flights_controller.gd" id="13_3g2uh"]
+[ext_resource type="PackedScene" uid="uid://bsv7s885ioltl" path="res://scenes/LTScreen.tscn" id="14_3g2uh"]
+[ext_resource type="Script" uid="uid://bklsfjk5t8hu0" path="res://scripts/disaster_controller.gd" id="16_axqfy"]
+[ext_resource type="Script" uid="uid://v6xxvvxy8nnv" path="res://scripts/clearance_requests_manager.gd" id="16_wke1g"]
+[ext_resource type="PackedScene" uid="uid://c1hccff60yyhh" path="res://scenes/DisasterScreen.tscn" id="17_q27m3"]
+[ext_resource type="AudioStream" uid="uid://cmto1dscp4egg" path="res://assets/sounds/airplanes_collision.wav" id="18_cyats"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f8bd6"]
 
@@ -25,23 +33,22 @@ corner_radius_top_right = 22
 corner_radius_bottom_right = 22
 corner_radius_bottom_left = 22
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d0kku"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ms6rp"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nkv16"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3g2uh"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3g2uh"]
+bg_color = Color(0.093160845, 0.093160845, 0.093160816, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ms6rp"]
-bg_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+bg_color = Color(0.04395193, 0.04395193, 0.04395192, 1)
 corner_radius_top_left = 28
 corner_radius_top_right = 28
 corner_radius_bottom_right = 28
 corner_radius_bottom_left = 28
 
 [node name="ColorRect" type="ColorRect" unique_id=1755434994]
-offset_right = 486.0
+offset_right = 486.00037
 offset_bottom = 864.0
 color = Color(0.22745098, 0.22745098, 0.22745098, 1)
 
@@ -95,13 +102,15 @@ configuration_popup = NodePath("../../marker_configuration_popup")
 marker_scene = ExtResource("2_lf8d6")
 markers_container = NodePath("../markers")
 
-[node name="LeftRunway" type="TextureRect" parent="." unique_id=171967456]
+[node name="LeftRunway" type="TextureRect" parent="." unique_id=171967456 node_paths=PackedStringArray("number_label")]
 layout_mode = 0
 offset_left = 95.0
 offset_top = 150.0
 offset_right = 203.0
 offset_bottom = 864.0
 texture = ExtResource("3_1agfe")
+script = ExtResource("5_ms6rp")
+number_label = NodePath("Label")
 
 [node name="Label" type="Label" parent="LeftRunway" unique_id=339287743]
 clip_contents = true
@@ -116,24 +125,16 @@ text = "36L"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Airplane" type="Sprite2D" parent="LeftRunway" unique_id=268349100]
-position = Vector2(54, 474)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_svp2y")
-script = ExtResource("5_1agfe")
-
-[node name="Shadow" type="Sprite2D" parent="LeftRunway/Airplane" unique_id=208638738]
-modulate = Color(1, 1, 1, 0.4)
-texture = ExtResource("4_svp2y")
-script = ExtResource("5_1agfe")
-
-[node name="RightRunway" type="TextureRect" parent="." unique_id=139722844]
+[node name="RightRunway" type="TextureRect" parent="." unique_id=139722844 node_paths=PackedStringArray("number_label")]
 layout_mode = 0
 offset_left = 277.0
 offset_top = 150.0
 offset_right = 385.0
 offset_bottom = 864.0
 texture = ExtResource("3_1agfe")
+script = ExtResource("5_ms6rp")
+side = 1
+number_label = NodePath("Label")
 
 [node name="Label" type="Label" parent="RightRunway" unique_id=386379049]
 clip_contents = true
@@ -148,7 +149,7 @@ text = "36R"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="." unique_id=1644018488]
+[node name="Button" type="Button" parent="." unique_id=1644018488 node_paths=PackedStringArray("LTScreen")]
 custom_minimum_size = Vector2(290, 44)
 layout_mode = 0
 offset_left = 95.0
@@ -158,27 +159,29 @@ offset_bottom = 132.0
 theme_override_fonts/font = SubResource("FontVariation_omtq4")
 theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxFlat_omtq4")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_d0kku")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_ms6rp")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_nkv16")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_3g2uh")
-text = "Запросы на взлёт и посадку (0)"
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3g2uh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_omtq4")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_omtq4")
+theme_override_styles/focus = SubResource("StyleBoxFlat_omtq4")
+text = "Landing and Takeoff Requests (0)"
+script = ExtResource("9_nkv16")
+LTScreen = NodePath("../LTScreen")
 
 [node name="settings" type="Button" parent="." unique_id=487027163]
 custom_minimum_size = Vector2(55, 55)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.041152265
-anchor_top = 0.9131944
-anchor_right = 0.15432099
-anchor_bottom = 0.9768519
-offset_left = 391.0
-offset_top = -1.0
-offset_right = 391.00006
-offset_bottom = -1.0
+anchor_left = 0.845679
+anchor_top = 0.912037
+anchor_right = 0.9588479
+anchor_bottom = 0.9756944
 grow_vertical = 0
 theme_override_constants/icon_max_width = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_ms6rp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ms6rp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ms6rp")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ms6rp")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ms6rp")
 icon = ExtResource("9_omtq4")
 icon_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -196,9 +199,49 @@ offset_right = -47.0
 grow_vertical = 0
 theme_override_constants/icon_max_width = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_ms6rp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ms6rp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ms6rp")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ms6rp")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ms6rp")
 icon = ExtResource("10_d0kku")
 icon_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="marker_configuration_popup" parent="." unique_id=696178330 instance=ExtResource("11_d0kku")]
 visible = false
+
+[node name="HUD" parent="." unique_id=1849571194 instance=ExtResource("11_ms6rp")]
+
+[node name="LTScreen" parent="." unique_id=1595472190 instance=ExtResource("14_3g2uh")]
+visible = false
+layout_mode = 0
+
+[node name="FlightsController" type="Node" parent="." unique_id=2070069175 node_paths=PackedStringArray("left_runway", "right_runway")]
+script = ExtResource("13_3g2uh")
+airplane_scene = ExtResource("7_nkv16")
+left_runway = NodePath("../LeftRunway")
+right_runway = NodePath("../RightRunway")
+
+[node name="ClearancesGenerator" type="Node" parent="." unique_id=1684655745]
+script = ExtResource("16_wke1g")
+
+[node name="DisastersContoller" type="Node" parent="." unique_id=741093980 node_paths=PackedStringArray("collision_sound_player", "overlay")]
+process_mode = 3
+script = ExtResource("16_axqfy")
+disaster_screen = ExtResource("17_q27m3")
+collision_sound_player = NodePath("AirplanesCollision")
+overlay = NodePath("../CanvasLayer/ColorRect")
+
+[node name="AirplanesCollision" type="AudioStreamPlayer" parent="DisastersContoller" unique_id=907649544]
+stream = ExtResource("18_cyats")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=711601869]
+layer = 99999
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1255958374]
+process_mode = 3
+modulate = Color(1, 1, 1, 0)
+offset_right = 486.0
+offset_bottom = 864.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

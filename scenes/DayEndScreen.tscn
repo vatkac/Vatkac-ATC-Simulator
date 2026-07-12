@@ -1,0 +1,123 @@
+[gd_scene format=3 uid="uid://5hcn71cc67mj"]
+
+[ext_resource type="Texture2D" uid="uid://dh35vudefxck8" path="res://assets/textures/good_trust.svg" id="2_bwf61"]
+
+[sub_resource type="FontVariation" id="FontVariation_r0a6p"]
+variation_opentype = {
+2003265652: 900
+}
+
+[sub_resource type="FontVariation" id="FontVariation_yuv2n"]
+variation_opentype = {
+2003265652: 500
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cwf7n"]
+bg_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+corner_radius_top_left = 33
+corner_radius_top_right = 33
+corner_radius_bottom_right = 33
+corner_radius_bottom_left = 33
+
+[node name="day_end_screen" type="CanvasLayer" unique_id=934721677]
+layer = 15
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1713523919]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.22745098, 0.22745098, 0.22745098, 1)
+
+[node name="header" type="Label" parent="." unique_id=1002564690]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.26157406
+offset_bottom = 1.5258789e-05
+theme_override_colors/font_color = Color(0.4862745, 0.7764706, 0.5294118, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = SubResource("FontVariation_r0a6p")
+theme_override_font_sizes/font_size = 48
+text = "DAY
+COMPLETE!"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="text" type="RichTextLabel" parent="." unique_id=584405945]
+custom_minimum_size = Vector2(348, 81)
+anchors_preset = -1
+anchor_left = 0.14197531
+anchor_top = 0.2037037
+anchor_right = 0.8580247
+anchor_bottom = 0.3113426
+offset_top = -13.0
+offset_bottom = -25.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25)
+theme_override_constants/shadow_outline_size = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "28.05.2026 is complete!
+Today your trust has [color=7cc687]increased[/color]!"
+autowrap_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="illustration" type="TextureRect" parent="." unique_id=367709066]
+custom_minimum_size = Vector2(206, 206)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -103.0
+offset_top = -103.0
+offset_right = 103.0
+offset_bottom = 103.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_bwf61")
+expand_mode = 1
+
+[node name="trust_text" type="RichTextLabel" parent="." unique_id=597164006]
+custom_minimum_size = Vector2(206, 31)
+anchors_preset = -1
+anchor_left = 0.28806585
+anchor_top = 0.6545139
+anchor_right = 1.0041152
+anchor_bottom = 0.7621528
+offset_top = -9.5
+offset_right = -142.0
+offset_bottom = -71.5
+grow_horizontal = 2
+theme_override_colors/default_color = Color(1, 1, 1, 0.5)
+theme_override_fonts/normal_font = SubResource("FontVariation_yuv2n")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[color=7cc687]94[/color]/100"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="button" type="Button" parent="." unique_id=1764444640]
+custom_minimum_size = Vector2(435, 66)
+anchors_preset = -1
+anchor_left = 0.052469134
+anchor_top = 0.8020833
+anchor_right = 0.94753087
+anchor_bottom = 0.8784722
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_cwf7n")
+text = "Next day!"
+metadata/_edit_use_anchors_ = true

@@ -18,7 +18,7 @@ var _trust: int
 
 func _ready() -> void:
 	GlobalEvents.trust_changed.connect(_set_trust)
-	_set_trust(100)
+	_set_trust(UserData.current_trust)
 
 func _between(value: int, left_inclusive: int, right_exclusive: int) -> bool:
 	return clamp(value, left_inclusive, right_exclusive - 1) == value

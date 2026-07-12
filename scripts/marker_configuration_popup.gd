@@ -25,7 +25,7 @@ func _ready() -> void:
 	blur_node.material.set_shader_parameter("darkness", 0.0)
 	visible = false
 	
-	decline_button.pressed.connect(play_hide_animation)
+	decline_button.pressed.connect(func(): play_hide_animation(); GlobalEvents.marker_configuration_cancelled.emit())
 	accept_button.pressed.connect(accept_marker)
 
 func accept_marker() -> void:
