@@ -3,7 +3,7 @@ class_name TimeController
 
 ## === Shift Settings ===
 @export_category("Shift Settings")
-@export var one_ingame_minute_seconds: float = 1.5
+@export var one_ingame_minute_seconds: float = 1.25
 @export var shift_duration_hours: int = 8
 # == Shift Start Settings ==
 @export var hours_start: int = 8
@@ -12,12 +12,13 @@ class_name TimeController
 ## === Other ===
 @export_category("Other")
 @export var time_node: Label
+@export var date_node: Label
 
 var timer := 0.0
 
 func _ready() -> void:
-	if UserData.cur_hours == 0 and UserData.cur_minutes == 0 and UserData.total_minutes == 0:
-		UserData.initialize_time(hours_start, minutes_start)
+	UserData.initialize_time(hours_start, minutes_start)
+	date_node.text = UserData.cur_date.to_formatted_string("%02d.%02d\n%04d")
 	update_UI()
 
 func _process(delta: float) -> void:
@@ -45,10 +46,8 @@ func update_UI() -> void:
 	time_node.text = str(UserData.cur_hours).pad_zeros(2) + ":" + str(UserData.cur_minutes).pad_zeros(2)
 
 func finish_day() -> void:
-	print("Day finished!")
-	
 	UserData.cur_hours = hours_start
 	UserData.cur_minutes = minutes_start
 	UserData.total_minutes = hours_start * 60 + minutes_start
 	
-	# TODO: Show the "Day complete!" screen.
+	get_tree().change_scene_to_file("res://scenes/DayEndScreen.tscn")

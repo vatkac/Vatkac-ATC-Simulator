@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Vatkac ATC [IN DEVELOPMENT]"
-run/main_scene="uid://dwtjritg2ax0d"
+run/main_scene="uid://cu0botc7s71l8"
 config/features=PackedStringArray("4.7", "Mobile")
 
 [autoload]
@@ -23,14 +23,15 @@ config/features=PackedStringArray("4.7", "Mobile")
 GlobalEvents="*res://scripts/global_events.gd"
 SoundEffectsManager="*uid://clxn6dgwe12tm"
 BackgroundMusicPlayer="*uid://jbmtg7c4bm8l"
-RouteGenerator="*uid://v6xxvvxy8nnv"
 UserData="*uid://danku7jtcr64n"
+Settings="*uid://x2ewq6m516rp"
 
 [display]
 
 window/size/viewport_width=486
 window/size/viewport_height=864
 window/stretch/mode="canvas_items"
+window/handheld/orientation=1
 
 [editor_plugins]
 
@@ -44,4 +45,5 @@ theme/custom_font="uid://ct123v5bddm61"
 [rendering]
 
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0.22745098, 0.22745098, 0.22745098, 1)

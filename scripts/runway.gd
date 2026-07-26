@@ -6,4 +6,4 @@ enum RunwayType { L, R }
 @export var number_label: Label
 
 func _ready() -> void:
-	number_label.text = UserData.runways_number + RunwayType.keys()[side]
+	number_label.text = Settings.runways_number + RunwayType.keys()[side]

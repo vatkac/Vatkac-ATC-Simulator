@@ -14,7 +14,7 @@ func _ready() -> void:
 
 func add_row(info: FlightClearance) -> void:
 	if get_child_count() - 1 >= max_rows:
-		push_error("Table overflow!")
+		UserData.table_overflows += 1
 		return
 	
 	var new_row: FlightClearanceRow = row_scene.instantiate()

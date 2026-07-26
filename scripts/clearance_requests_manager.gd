@@ -1,6 +1,7 @@
 extends Node
 
-@export var generate_interval_ingame_minutes := 3
+var DATA_CONFIG_PATH = "res://assets/cities_data.cfg"
+@export var generate_interval_ingame_minutes := 4
 @export_range(0.0, 1.0) var generate_chance := 0.4
 @export var min_notice_time_ingame_minutes := 15
 @export var max_notice_time_ingame_minutes := 40
@@ -9,19 +10,17 @@ static var ALPHABET: Array = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split()
 var cities_pool: Array
 
 func _ready() -> void:
-	if not UserData.selected_city:
-		return
 	prepare_cities_pool()
 	GlobalEvents.minute_passed.connect(on_minute_passed)
 
 func prepare_cities_pool() -> void:
 	var config := ConfigFile.new()
-	var error = config.load("res://assets/cities_data.cfg")
+	var error = config.load(DATA_CONFIG_PATH)
 	
 	if error == OK:
-		var packed_array = config.get_value("Data", "cities") as PackedStringArray
+		var packed_array = config.get_value("Data", "data") as PackedStringArray
 		cities_pool = Array(packed_array)
-		cities_pool.erase(UserData.selected_city)
+		cities_pool.erase(Settings.selected_city)
 	else:
 		push_error("Error while loading cities!")
 
@@ -32,7 +31,7 @@ func get_random_city() -> String:
 
 func generate_route(clearance_type: FlightClearance.ClearanceType) -> Array:
 	var random_city = get_random_city()
-	var player_city = UserData.selected_city
+	var player_city = Settings.selected_city
 	
 	if clearance_type == FlightClearance.ClearanceType.Takeoff:
 		return [player_city, random_city]
@@ -63,7 +62,7 @@ func generate_clearance() -> FlightClearance:
 	clearance.aircraft_callsign = generate_callsign()
 	clearance.city1 = route[0]
 	clearance.city2 = route[1]
-	clearance.runway = UserData.runways_number + Runway.RunwayType.keys()[randi_range(0, 1)]
+	clearance.runway = Settings.runways_number + Runway.RunwayType.keys()[randi_range(0, 1)]
 	
 	return clearance
 

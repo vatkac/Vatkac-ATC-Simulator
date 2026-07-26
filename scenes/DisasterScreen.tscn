@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c1hccff60yyhh"]
 
 [ext_resource type="Texture2D" uid="uid://8lhba1r6rlt0" path="res://assets/textures/airplanes_collision.png" id="1_15po1"]
+[ext_resource type="Script" uid="uid://713sd3pomdpl" path="res://scripts/disaster_screen.gd" id="1_hv8qc"]
 [ext_resource type="FontVariation" uid="uid://ct123v5bddm61" path="res://assets/fonts/Raleway-Standard.tres" id="2_ktmr4"]
 
 [sub_resource type="FontVariation" id="FontVariation_r0a6p"]
@@ -26,13 +27,23 @@ corner_radius_top_right = 33
 corner_radius_bottom_right = 33
 corner_radius_bottom_left = 33
 
-[node name="disaster_screen" type="Control" unique_id=1388001709]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hv8qc"]
+bg_color = Color(0.07123137, 0.0712314, 0.07123134, 1)
+corner_radius_top_left = 33
+corner_radius_top_right = 33
+corner_radius_bottom_right = 33
+corner_radius_bottom_left = 33
+
+[node name="disaster_screen" type="Control" unique_id=1388001709 node_paths=PackedStringArray("text", "button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_hv8qc")
+text = NodePath("text")
+button = NodePath("button")
 
 [node name="header" type="Label" parent="." unique_id=1002564690]
 layout_mode = 1
@@ -47,14 +58,14 @@ theme_override_constants/shadow_offset_y = 0
 theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/font = SubResource("FontVariation_r0a6p")
 theme_override_font_sizes/font_size = 48
-text = "YOU CAUSED A
-DISASTER."
+text = "ВЫ СОВЕРШИЛИ
+ОШИБКУ."
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="text" type="Label" parent="." unique_id=954063027]
-custom_minimum_size = Vector2(348, 81)
+custom_minimum_size = Vector2(350, 81)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.14197531
@@ -71,7 +82,7 @@ theme_override_constants/shadow_offset_y = 0
 theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/font = SubResource("FontVariation_ktmr4")
 theme_override_font_sizes/font_size = 24
-text = "Two airplanes have collided on the runway IDK. The airport is closed until tomorrow."
+text = "Два самолёта столкнулись на ВПП 26L. Аэропорт закрыт до завтрашнего дня."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -92,7 +103,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_15po1")
 
-[node name="button" type="Button" parent="." unique_id=1764444640]
+[node name="button" type="Button" parent="." unique_id=2045181769]
 custom_minimum_size = Vector2(435, 66)
 layout_mode = 1
 anchors_preset = -1
@@ -105,5 +116,9 @@ grow_vertical = 0
 theme_override_fonts/font = SubResource("FontVariation_nkv16")
 theme_override_font_sizes/font_size = 26
 theme_override_styles/normal = SubResource("StyleBoxFlat_cwf7n")
-text = "Finish shift"
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hv8qc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cwf7n")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_cwf7n")
+theme_override_styles/focus = SubResource("StyleBoxFlat_cwf7n")
+text = "Закончить смену"
 metadata/_edit_use_anchors_ = true

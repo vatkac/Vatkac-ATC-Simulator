@@ -2,7 +2,18 @@
 
 [ext_resource type="Script" uid="uid://tqmm3k0j0nle" path="res://scripts/flight_clearance_row.gd" id="1_cf3v4"]
 [ext_resource type="FontFile" uid="uid://5a5d58yrxn7e" path="res://assets/fonts/Inder-Regular.ttf" id="2_5q774"]
+[ext_resource type="FontFile" uid="uid://dr22wh1ga2js" path="res://assets/fonts/Raleway-VariableFont_wght.ttf" id="2_igq1f"]
 [ext_resource type="PackedScene" uid="uid://di088vep7t2kw" path="res://scenes/AcceptDeclineButtons.tscn" id="3_5q774"]
+
+[sub_resource type="FontVariation" id="FontVariation_aqpk0"]
+base_font = ExtResource("2_igq1f")
+variation_opentype = {
+0: 1,
+2003265652: 550
+}
+opentype_features = {
+0: 1
+}
 
 [sub_resource type="FontVariation" id="FontVariation_igq1f"]
 base_font = ExtResource("2_5q774")
@@ -36,6 +47,7 @@ size_flags_vertical = 4
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/font = SubResource("FontVariation_aqpk0")
 theme_override_font_sizes/font_size = 16
 text = "AFL123"
 horizontal_alignment = 1

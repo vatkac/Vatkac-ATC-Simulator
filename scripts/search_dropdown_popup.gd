@@ -29,9 +29,10 @@ extends TextureRect
 @export var bar_first_stage_x := 79
 @export var bar_second_stage_x := 110
 
+var DATA_CONFIG_PATH = "res://assets/cities_data.cfg"
 enum Stage { OPTION_PICKED, SEARCH_NOT_STARTED, SEARCHING }
 var current_stage := Stage.OPTION_PICKED
-var cities: PackedStringArray
+var data: PackedStringArray
 var are_search_results_minimized := false
 var search_results_tween: Tween
 var show_hide_tween: Tween
@@ -42,21 +43,21 @@ func _ready() -> void:
 	agree_button.pressed.connect(confirm_option)
 	GlobalEvents.search_option_picked.connect(pick_option)
 	
-	cities = load_cities()
+	data = load_data()
 	self.scale = Vector2.ZERO
 	blur_node.material.set_shader_parameter("blur_amount", 0.0)
 	blur_node.material.set_shader_parameter("darkness", 0.0)
 	play_show_animation()
 
-func load_cities() -> PackedStringArray:
+func load_data() -> PackedStringArray:
 	var config := ConfigFile.new()
-	var error = config.load("res://assets/cities_data.cfg")
+	var error = config.load(DATA_CONFIG_PATH)
 	
 	if error == OK:
-		var packed_array = config.get_value("Data", "cities") as PackedStringArray
+		var packed_array = config.get_value("Data", "data") as PackedStringArray
 		return packed_array
 			
-	push_error("Error while loading cities!")
+	push_error("Error while loading data!")
 	return []
 
 func switch_stage(new_stage: Stage):
@@ -111,9 +112,9 @@ func update_search_results(new_text: String) -> void:
 	new_text = new_text.to_lower()
 	var options_count := len(option_buttons)
 	var results: Array[String] = []
-	var found_start := false  # The cities are sorted. If we find start of 
+	var found_start := false  # The data are sorted. If we find start of 
 							  # a prefix and then hit the end, there is no need to try finding another city
-	for city in cities:  # Linear search is... fine for 4000 cities I guess.
+	for city in data:  # Linear search is... fine for 4000 data I guess.
 		if city.to_lower().begins_with(new_text) and len(results) < options_count:
 			results.append(city)
 			found_start = true
@@ -148,9 +149,10 @@ func play_self_destroy_animation() -> void:
 	show_hide_tween.tween_property(self, "scale", Vector2.ZERO, 0.5)
 	show_hide_tween.parallel().tween_property(blur_node, "material:shader_parameter/blur_amount", 0.0, 0.5)
 	show_hide_tween.parallel().tween_property(blur_node, "material:shader_parameter/darkness", 0.0, 0.5)
-	show_hide_tween.tween_callback(func(): blur_node.queue_free(); UserData.set_city(picked_option.text))
+	await show_hide_tween.finished
+	blur_node.queue_free()
+	GlobalEvents.dropdown_option_picked.emit(picked_option.text)
 
 func confirm_option() -> void:
-	GlobalEvents.dropdown_option_picked.emit(picked_option.text)
 	agree_button.disabled = true
 	play_self_destroy_animation()

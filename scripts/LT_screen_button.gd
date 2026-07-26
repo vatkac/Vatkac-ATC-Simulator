@@ -11,6 +11,7 @@ func _ready() -> void:
 	GlobalEvents.flight_clearance_created.connect(update_counter)
 	GlobalEvents.flight_clearance_accepted.connect(update_counter)
 	GlobalEvents.flight_clearance_declined.connect(update_counter)
+	GlobalEvents.flight_clearance_ignored.connect(update_counter)
 	pressed.connect(func(): LTScreen.visible = true)
 
 func update_counter(_clearance) -> void:

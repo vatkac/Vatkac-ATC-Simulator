@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://bsbn4vvr14y67" path="res://scripts/runway.gd" id="5_ms6rp"]
 [ext_resource type="PackedScene" uid="uid://7gy8obbnandj" path="res://scenes/Airplane.tscn" id="7_nkv16"]
 [ext_resource type="Texture2D" uid="uid://cvkl2morapi01" path="res://assets/icons/add.svg" id="8_50uwr"]
-[ext_resource type="Script" uid="uid://ctys4b8vxqnej" path="res://scripts/LTScreenButton.gd" id="9_nkv16"]
+[ext_resource type="Script" uid="uid://ctys4b8vxqnej" path="res://scripts/LT_screen_button.gd" id="9_nkv16"]
 [ext_resource type="Texture2D" uid="uid://pk4kid1mt2fj" path="res://assets/icons/settings.svg" id="9_omtq4"]
 [ext_resource type="Texture2D" uid="uid://celwy05cgw5o" path="res://assets/icons/shop.svg" id="10_d0kku"]
 [ext_resource type="PackedScene" uid="uid://cikut3i5bid6j" path="res://scenes/MarkerConfigurationPopup.tscn" id="11_d0kku"]
@@ -163,7 +163,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_3g2uh")
 theme_override_styles/hover = SubResource("StyleBoxFlat_omtq4")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_omtq4")
 theme_override_styles/focus = SubResource("StyleBoxFlat_omtq4")
-text = "Landing and Takeoff Requests (0)"
+text = "Запросы на взлёт и посадку (0)"
 script = ExtResource("9_nkv16")
 LTScreen = NodePath("../LTScreen")
 

@@ -1,7 +1,6 @@
-[gd_scene format=3 uid="uid://5hcn71cc67mj"]
+[gd_scene format=3 uid="uid://1hqadsh7005t"]
 
-[ext_resource type="Script" uid="uid://b1q6kcr7y587q" path="res://scripts/day_end_screen.gd" id="1_ck663"]
-[ext_resource type="PackedScene" uid="uid://cfa2ntix1bdtq" path="res://scenes/TrustMeter.tscn" id="1_phal4"]
+[ext_resource type="Script" uid="uid://4v22dkkk1m2v" path="res://scripts/month_end_screen.gd" id="1_52r5a"]
 
 [sub_resource type="FontVariation" id="FontVariation_r0a6p"]
 variation_opentype = {
@@ -10,7 +9,7 @@ variation_opentype = {
 
 [sub_resource type="FontVariation" id="FontVariation_yuv2n"]
 variation_opentype = {
-2003265652: 500
+2003265652: 700
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cwf7n"]
@@ -20,43 +19,43 @@ corner_radius_top_right = 33
 corner_radius_bottom_right = 33
 corner_radius_bottom_left = 33
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1d7lt"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jqmyl"]
 bg_color = Color(0.07123137, 0.0712314, 0.07123134, 1)
 corner_radius_top_left = 33
 corner_radius_top_right = 33
 corner_radius_bottom_right = 33
 corner_radius_bottom_left = 33
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ck663"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_52r5a"]
 bg_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
 corner_radius_top_left = 33
 corner_radius_top_right = 33
 corner_radius_bottom_right = 33
 corner_radius_bottom_left = 33
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bwf61"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1055s"]
 bg_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
 corner_radius_top_left = 33
 corner_radius_top_right = 33
 corner_radius_bottom_right = 33
 corner_radius_bottom_left = 33
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gtlqv"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ywgwr"]
 bg_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
 corner_radius_top_left = 33
 corner_radius_top_right = 33
 corner_radius_bottom_right = 33
 corner_radius_bottom_left = 33
 
-[node name="day_end_screen" type="CanvasLayer" unique_id=934721677 node_paths=PackedStringArray("header_label", "main_text_label", "trust_text_label", "button")]
+[node name="month_end_screen" type="CanvasLayer" unique_id=934721677 node_paths=PackedStringArray("main_text_label", "salary_text_label", "button")]
 layer = 15
-script = ExtResource("1_ck663")
-header_label = NodePath("header")
+script = ExtResource("1_52r5a")
 main_text_label = NodePath("text")
-trust_text_label = NodePath("trust_text")
+salary_text_label = NodePath("salary_text")
+salary_increased_color = Color(0.4862745, 0.7764706, 0.5294118, 1)
+salary_decreased_color = Color(0.80784315, 0.3882353, 0.3882353, 1)
+same_salary_color = Color(0.7490196, 0.7490196, 0.7490196, 1)
 button = NodePath("button")
-trust_increased_color = Color(0.4862745, 0.7764706, 0.5294118, 1)
-trust_decreased_color = Color(0.80784315, 0.3882353, 0.3882353, 1)
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1713523919]
 anchors_preset = 15
@@ -78,23 +77,21 @@ theme_override_constants/shadow_offset_y = 0
 theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/font = SubResource("FontVariation_r0a6p")
 theme_override_font_sizes/font_size = 48
-text = "ДЕНЬ
+text = "МЕСЯЦ
 ПРОЙДЕН!"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="text" type="RichTextLabel" parent="." unique_id=584405945]
-custom_minimum_size = Vector2(435, 111)
+custom_minimum_size = Vector2(348, 81)
 anchors_preset = -1
 anchor_left = 0.14197531
 anchor_top = 0.2037037
 anchor_right = 0.8580247
 anchor_bottom = 0.3113426
-offset_left = -43.5
-offset_top = -1.0
-offset_right = 43.5
-offset_bottom = 17.0
+offset_top = -13.0
+offset_bottom = -25.0
 grow_horizontal = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25)
 theme_override_constants/shadow_outline_size = 0
@@ -102,29 +99,26 @@ theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 0
 theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
-text = "28.05.2026 is complete!
-Today your trust has [font otv=\"wght=500\"][color=\"#7cc687\"]increased[/color][/font]!"
-fit_content = true
-scroll_active = false
+text = "Май 2026 пройден!
+Ваша ЗП [font otv=\"wght=500\"][color=\"#7cc687\"]выросла на 2000$[/color][/font]!"
+autowrap_mode = 2
 horizontal_alignment = 1
+vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="trust_text" type="RichTextLabel" parent="." unique_id=597164006]
-custom_minimum_size = Vector2(206, 31)
+[node name="salary_text" type="RichTextLabel" parent="." unique_id=597164006]
+custom_minimum_size = Vector2(486, 79)
 anchors_preset = -1
-anchor_left = 0.28806585
-anchor_top = 0.6545139
-anchor_right = 1.0041152
-anchor_bottom = 0.7621528
-offset_top = -9.5
-offset_right = -142.0
-offset_bottom = -71.5
+anchor_top = 0.43287036
+anchor_right = 1.0
+anchor_bottom = 0.5648148
 grow_horizontal = 2
-theme_override_colors/default_color = Color(1, 1, 1, 0.5)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_fonts/normal_font = SubResource("FontVariation_yuv2n")
-theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/normal_font_size = 96
 bbcode_enabled = true
-text = "[color=7cc687]94[/color]/100"
+text = "[color=\"#bfbfbf\"]$[/color]6000"
+fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -141,16 +135,9 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 26
 theme_override_styles/normal = SubResource("StyleBoxFlat_cwf7n")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_1d7lt")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ck663")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_bwf61")
-theme_override_styles/focus = SubResource("StyleBoxFlat_gtlqv")
-text = "Продолжить"
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jqmyl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_52r5a")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_1055s")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ywgwr")
+text = "Следующий месяц!"
 metadata/_edit_use_anchors_ = true
-
-[node name="TrustMeter" parent="." unique_id=145315332 instance=ExtResource("1_phal4")]
-offset_left = 139.0
-offset_top = 329.0
-offset_right = 345.0
-offset_bottom = 535.0
-trust = 50

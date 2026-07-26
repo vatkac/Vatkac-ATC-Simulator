@@ -11,10 +11,8 @@ extends TextureRect
 
 var _trust: int
 @export_range(0, 100) var trust: int:
-	get:
-		return _trust
-	set(val):
-		_set_trust(val)
+	get: return _trust
+	set(val): _set_trust(val)
 
 func _ready() -> void:
 	GlobalEvents.trust_changed.connect(_set_trust)

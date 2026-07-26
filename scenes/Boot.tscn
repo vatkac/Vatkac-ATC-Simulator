@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cu0botc7s71l8"]
+
+[ext_resource type="Script" uid="uid://dlsuh0wctkbvc" path="res://scripts/boot.gd" id="1_bq0a7"]
+[ext_resource type="PackedScene" uid="uid://klwgumijm2p6" path="res://scenes/SearchDropdownPopup.tscn" id="2_f6jgv"]
+
+[node name="Boot" type="Node" unique_id=284728711]
+script = ExtResource("1_bq0a7")
+search_dropdown_packed = ExtResource("2_f6jgv")
