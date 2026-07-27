@@ -8,7 +8,7 @@ signal flight_clearance_created(clearance: FlightClearance)
 signal flight_clearance_accepted(clearance: FlightClearance)
 signal flight_clearance_declined(clearance: FlightClearance)
 signal flight_clearance_ignored(clearance: FlightClearance)
-
+signal flight_clearance_pending(clearance: FlightClearance)
 signal search_option_picked(option: String)
 signal dropdown_option_picked(option: String)
 

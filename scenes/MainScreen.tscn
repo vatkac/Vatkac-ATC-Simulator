@@ -222,8 +222,9 @@ airplane_scene = ExtResource("7_nkv16")
 left_runway = NodePath("../LeftRunway")
 right_runway = NodePath("../RightRunway")
 
-[node name="ClearancesGenerator" type="Node" parent="." unique_id=1684655745]
+[node name="ClearancesGenerator" type="Node" parent="." unique_id=1684655745 node_paths=PackedStringArray("LT_button")]
 script = ExtResource("16_wke1g")
+LT_button = NodePath("../Button")
 
 [node name="DisastersContoller" type="Node" parent="." unique_id=741093980 node_paths=PackedStringArray("collision_sound_player", "overlay")]
 process_mode = 3

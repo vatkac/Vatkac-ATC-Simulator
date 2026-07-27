@@ -5,6 +5,7 @@ var DATA_CONFIG_PATH = "res://assets/cities_data.cfg"
 @export_range(0.0, 1.0) var generate_chance := 0.4
 @export var min_notice_time_ingame_minutes := 15
 @export var max_notice_time_ingame_minutes := 40
+@export var LT_button: LTButton
 
 static var ALPHABET: Array = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split()
 var cities_pool: Array
@@ -12,6 +13,14 @@ var cities_pool: Array
 func _ready() -> void:
 	prepare_cities_pool()
 	GlobalEvents.minute_passed.connect(on_minute_passed)
+	GlobalEvents.flight_clearance_pending.connect(LT_button.update_counter)
+	GlobalEvents.flight_clearance_accepted.connect(erase_and_update)
+	GlobalEvents.flight_clearance_declined.connect(erase_and_update)
+	GlobalEvents.flight_clearance_ignored.connect(erase_and_update)
+
+func erase_and_update(clearance: FlightClearance) -> void:
+	UserData.pending_clearances.erase(clearance)
+	LT_button.update_counter(clearance)
 
 func prepare_cities_pool() -> void:
 	var config := ConfigFile.new()
@@ -80,5 +89,4 @@ func on_minute_passed(total_minutes: int) -> void:
 	if randf() > generate_chance: return
 	
 	var clearance = generate_clearance()
-	UserData.pending_clearances.append(clearance)
 	GlobalEvents.flight_clearance_created.emit(clearance)

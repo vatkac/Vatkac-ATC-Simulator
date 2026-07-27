@@ -9,3 +9,10 @@ enum ClearanceType { Landing, Takeoff }
 @export var runway: String
 @export var clearance_type: ClearanceType
 @export var clearance_total_mins_time: int
+
+func _to_string() -> String:
+	return "%s %s %s" % [
+		aircraft_callsign,
+		runway,
+		clearance_time
+	]

@@ -22,9 +22,11 @@ func add_row(info: FlightClearance) -> void:
 		push_error("Row scene's class must be FlightClearanceRow!")
 	
 	new_row.set_info(info)
-	
 	add_child(new_row)
 	move_child(new_row, -2)
+	
+	UserData.pending_clearances.append(info)
+	GlobalEvents.flight_clearance_pending.emit(info)
 	
 	if get_child_count() - 1 == max_rows:
 		end_object.visible = false

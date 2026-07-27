@@ -36,7 +36,7 @@ func set_info(clearance: FlightClearance) -> void:
 
 ## Removes the row from the table and emits the corresponding global signal.
 func on_desicion_made(accepted: bool) -> void:
-	UserData.pending_clearances.erase(current_clearance)
+	if tween and tween.is_valid() and tween.is_running(): return
 	if accepted: GlobalEvents.flight_clearance_accepted.emit(current_clearance)
 	else: GlobalEvents.flight_clearance_declined.emit(current_clearance)
 	play_delete_animation()
@@ -48,8 +48,8 @@ func play_delete_animation() -> void:
 	tween.parallel().tween_property(self, "modulate:a", 0, 0.3)
 
 func on_minute_passed(total_mins: int) -> void:
+	if tween and tween.is_valid() and tween.is_running(): return
 	if current_clearance.clearance_total_mins_time == total_mins:
 		UserData.ignored_clearances_count += 1
-		UserData.pending_clearances.erase(current_clearance)
 		GlobalEvents.flight_clearance_ignored.emit(current_clearance)
 		play_delete_animation()

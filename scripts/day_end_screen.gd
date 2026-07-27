@@ -1,7 +1,7 @@
 extends CanvasLayer
 
-const MAIN_TEXT_STANDARD_TEMPLATE := '%s пройден!\nВаше доверие [font otv="wght=500"][color="#%s"]%s[/color][/font]!'
-const MAIN_TEXT_FIRED_TEMPLATE := "Ваше доверие упало до нуля. Вы были уволены из аэропорта. Весь ваш прогресс утерян. Вы можете начать игру заново."
+const MAIN_TEXT_STANDARD_TEMPLATE := '%s пройден!\nДоверие к вам [font otv="wght=500"][color="#%s"]%s[/color][/font]!'
+const MAIN_TEXT_FIRED_TEMPLATE := "Доверие к вам упало до нуля. Вы были уволены из аэропорта. Весь ваш прогресс утерян. Вы можете начать игру заново."
 const TRUST_TEXT_TEMPLATE := '[color="#%s"]%d[/color]/100'
 const STANDARD_HEADER = "ДЕНЬ\nПРОЙДЕН!"
 const FIRED_HEADER = "ВЫ\nУВОЛЕНЫ."
