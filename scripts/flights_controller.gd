@@ -16,6 +16,7 @@ func on_minute_passed(total_mins: int) -> void:
 	for clearance in UserData.scheduled_flights.get(total_mins, []):
 		clearance = clearance as FlightClearance
 		var airplane = airplane_scene.instantiate() as Airplane
+		airplane.set_clearance(clearance)
 		if clearance.runway[-1] == "L":  # костыль
 			left_runway.add_child(airplane)
 		else:
@@ -24,4 +25,3 @@ func on_minute_passed(total_mins: int) -> void:
 			airplane.land()
 		else:
 			airplane.take_off()
-	UserData.scheduled_flights.erase(total_mins)

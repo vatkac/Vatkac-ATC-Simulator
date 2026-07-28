@@ -1,6 +1,5 @@
 extends Node
 
-@export var min_rrs_ig_mins := 8  # Minimum Reduced Runway Separation (ingame minutes)
 @export var disaster_screen: PackedScene
 @export var collision_sound_player: AudioStreamPlayer
 @export var overlay: ColorRect
@@ -19,14 +18,14 @@ func check_for_upcoming_disasters(clearance: FlightClearance) -> Array:
 	
 	for time in UserData.scheduled_flights:
 		var difference: int = abs(clearance.clearance_total_mins_time - time)
-		if difference >= min_rrs_ig_mins: continue
+		if difference >= Settings.min_rrs_ig_mins: continue
 		for existing_clearance in UserData.scheduled_flights[time]:
 			if clearance == existing_clearance: continue
 			if clearance.runway != existing_clearance.runway: continue
 			if UserData.disaster and UserData.disaster_time_total_mins < clearance.clearance_total_mins_time: continue
 			disaster = true
 			disaster_runway = clearance.runway
-			disaster_time_total_mins = min(clearance.clearance_total_mins_time, existing_clearance.clearance_total_mins_time)
+			disaster_time_total_mins = min(clearance.clearance_total_mins_time, max(existing_clearance.clearance_total_mins_time, UserData.total_minutes))
 	return [disaster, disaster_runway, disaster_time_total_mins]
 
 func update_disasters_list(new_clearance: FlightClearance) -> void:

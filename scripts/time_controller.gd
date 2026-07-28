@@ -3,7 +3,6 @@ class_name TimeController
 
 ## === Shift Settings ===
 @export_category("Shift Settings")
-@export var one_ingame_minute_seconds: float = 1.25
 @export var shift_duration_hours: int = 8
 # == Shift Start Settings ==
 @export var hours_start: int = 8
@@ -23,8 +22,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	timer += delta
-	if timer >= one_ingame_minute_seconds:
-		timer -= one_ingame_minute_seconds
+	if timer >= Settings.one_ingame_minute_seconds:
+		timer -= Settings.one_ingame_minute_seconds
 		update_time()
 
 func update_time() -> void:

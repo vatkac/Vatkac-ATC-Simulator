@@ -33,9 +33,13 @@ class_name Airplane
 @export var opacity_animation_duration_seconds := 0.4
 
 var tween: Tween
+var clearance: FlightClearance
 
 func _ready() -> void:
 	visible = false
+
+func set_clearance(clearance_to_set: FlightClearance) -> void:
+	clearance = clearance_to_set
 
 func land() -> void:
 	if tween and tween.is_valid() and tween.is_running(): return
@@ -49,6 +53,10 @@ func land() -> void:
 	
 	tween.tween_property(self, "modulate:a", 0, opacity_animation_duration_seconds)
 	
+	await get_tree().create_timer(Settings.min_rrs_ig_mins * Settings.one_ingame_minute_seconds).timeout
+	UserData.scheduled_flights[clearance.clearance_total_mins_time].erase(clearance)
+	if UserData.scheduled_flights[clearance.clearance_total_mins_time].is_empty():
+		UserData.scheduled_flights.erase(clearance.clearance_total_mins_time)
 	await LT_sound_player.finished
 	await tween.finished
 	
@@ -97,6 +105,10 @@ func take_off() -> void:
 	tween2.parallel().tween_property(shadow, "scale", max_shadow_scale, takeoff_climb_seconds)
 	tween2.parallel().tween_property(shadow, "position:y", max_shadow_offset, takeoff_climb_seconds)
 	
+	await get_tree().create_timer(Settings.min_rrs_ig_mins * Settings.one_ingame_minute_seconds).timeout
+	UserData.scheduled_flights[clearance.clearance_total_mins_time].erase(clearance)
+	if UserData.scheduled_flights[clearance.clearance_total_mins_time].is_empty():
+		UserData.scheduled_flights.erase(clearance.clearance_total_mins_time)
 	await LT_sound_player.finished
 	await tween.finished
 	queue_free()
